@@ -1,4 +1,4 @@
-How to start the nodejs-express-govuk-mysql application
+How to start the Frontend
 ---
 
 1. Run `npm install` to build your application
