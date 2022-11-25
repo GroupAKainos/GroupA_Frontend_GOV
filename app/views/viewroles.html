@@ -1,0 +1,35 @@
+{% extends "layout.html" %} 
+{% block pageTitle %} 
+  List of Roles 
+{% endblock %} 
+ 
+
+
+{% block content %}
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">View Jobs</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Job Role Name</th>
+      <th scope="col" class="govuk-table__header">Job Specification Summary</th>
+    </tr>
+  </thead>
+
+{% if roles and roles.length > 0 %} 
+{% for role in roles %}
+
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"><a href="{{role.specification}}">{{role.jobName}}</a></th>
+      <td class="govuk-table__header govuk-!-width-one-half">{{role.specSummary}}</td>
+    </tr>
+    {% endfor %} 
+
+    {% else %} 
+    There are no job roles. 
+    {% endif %}
+      </tbody>
+    </table>
+
+    {% endblock %} 
