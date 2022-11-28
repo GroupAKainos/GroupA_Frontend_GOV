@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node start.js",
     "lint": "standard",
-    "test": "mocha ./**/tests/Unit/Service/*"
+    "test": "mocha ./**/test/Unit/Service/*"
   },
   "dependencies": {
     "acorn": "^7.1.1",
