@@ -9,4 +9,11 @@ router.get('/viewroles',  async (req, res) =>  {
     res.render('viewroles', { roles: s })
 })
 
+router.get('/viewcompetencies/:BandID',  async (req, res) =>  {
+    var bandID = req.params.BandID
+    var s = await employee.viewcompetency(bandID)
+
+    res.render('competenciesperband', { comps: s, band: bandID })
+})
+
 module.exports = router
