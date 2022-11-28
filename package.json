@@ -9,15 +9,17 @@
   "scripts": {
     "start": "node start.js",
     "lint": "standard",
-    "test": "npm run lint && gulp generate-assets && jest"
+    "test": "mocha tests/unit/**/*.js"
   },
   "dependencies": {
     "acorn": "^7.1.1",
     "ansi-colors": "^4.1.1",
+    "axios-mock-adapter": "^1.21.2",
     "basic-auth": "^2.0.0",
     "basic-auth-connect": "^1.0.0",
     "body-parser": "^1.14.1",
     "browser-sync": "^2.11.1",
+    "chai": "^4.3.7",
     "client-sessions": "^0.8.0",
     "cross-spawn": "^7.0.2",
     "del": "^5.1.0",
@@ -37,6 +39,7 @@
     "inquirer": "^7.1.0",
     "keypather": "^3.0.0",
     "marked": "^2.0.0",
+    "mocha": "^10.1.0",
     "mysql": "^2.18.1",
     "notifications-node-client": "^4.7.2",
     "nunjucks": "^3.2.1",
