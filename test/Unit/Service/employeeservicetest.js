@@ -14,6 +14,9 @@ const competencies ={
   subheading:"Test",
   information:"Test Information"
 }
+
+const url = process.env.URL;
+
 describe('EmployeeService', function () {
     describe('getViewJobRoles', function () {
         it('should return jobroles', async () => {
@@ -21,7 +24,7 @@ describe('EmployeeService', function () {
     
             const data = jobroles;
     
-            mock.onGet("http://localhost:8080/api/viewjobroles").reply(200, data);
+            mock.onGet(url+"/viewjobroles").reply(200, data);
     
             var results = await EmployeeService.viewjobroles();
             
@@ -31,7 +34,7 @@ describe('EmployeeService', function () {
           it('should throw exception when 500 error returned from axios when calling viewJobRoles', async () => {
             var mock = new MockAdapter(axios);
     
-            mock.onGet("http://localhost:8080/api/viewjobroles").reply(500);
+            mock.onGet(url+"/viewjobroles").reply(500);
     
             var error = await EmployeeService.viewjobroles();
             
@@ -44,7 +47,7 @@ describe('getCompetenciesPerBandLevel', function () {
 
     const data = competencies;
 
-    mock.onGet("http://localhost:8080/api/viewcompetency/1").reply(200, data);
+    mock.onGet(url+"/viewcompetency/1").reply(200, data);
 
     var results = await EmployeeService.viewcompetency(1);
     
@@ -56,7 +59,7 @@ describe('getCompetenciesPerBandLevel', function () {
 
     const data = competencies;
 
-    mock.onGet("http://localhost:8080/api/viewcompetency/9").reply(500);
+    mock.onGet(url+"/viewcompetency/9").reply(500);
 
     var error = await EmployeeService.viewcompetency(9);
     

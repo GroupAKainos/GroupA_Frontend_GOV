@@ -1,9 +1,9 @@
 const axios = require('axios');
-
+const url = process.env.URL
 
 exports.viewjobroles = async () => {
     try {
-        const results = await axios.get('http://localhost:8080/api/viewjobroles')
+        const results = await axios.get(url+'/viewjobroles')
         return results.data
 
     } catch (e) {
@@ -13,7 +13,7 @@ exports.viewjobroles = async () => {
 
 exports.viewcompetency = async (bandID) => {
     try {
-        const results = await axios.get('http://localhost:8080/api/viewcompetency/'+bandID)
+        const results = await axios.get(url+'/viewcompetency/'+bandID)
         return results.data
 
     } catch (e) {
