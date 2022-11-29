@@ -14,6 +14,7 @@
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Job Role Name</th>
       <th scope="col" class="govuk-table__header">Job Capability</th>
+      <th scope="col" class="govuk-table__header">Job Band Name</th>
       <th scope="col" class="govuk-table__header">Job Specification Summary</th>
       <th scope="col" class="govuk-table__header">Job Responsibility</th>
     </tr>
@@ -26,16 +27,15 @@
     <tr class="govuk-table__row">
       <td class="govuk-table__header govuk-!-width-one-third"><a href="{{role.specification}}">{{role.jobName}}</a></td>
       <td class="govuk-table__header govuk-!-width-one-third">{{role.capabilityName}}</td>
+      <td class="govuk-table__header govuk-!-width-one-half">{{role.bandName}}</td>
       <td class="govuk-table__header govuk-!-width-one-half">{{role.specSummary}}</td>
       <td class="govuk-table__header govuk-!-width-one-half">
-
         {% set res = role.jobResponsibility.split('•') %}
         {% set resrows = [] %} 
         {% for r in res %}
         <p>{{r}}</p>
         {% set resrows = (resrows.push([{ text: r }]), resrows) %} 
         {% endfor %} 
-        <!-- {{role.jobResponsibility.replace('•', '\n')}} -->
         
       </td>
     </tr>
