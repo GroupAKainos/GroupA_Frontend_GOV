@@ -30,15 +30,12 @@
       <td class="govuk-table__header govuk-!-width-one-half">{{role.bandName}}</td>
       <td class="govuk-table__header govuk-!-width-one-half">{{role.specSummary}}</td>
       <td class="govuk-table__header govuk-!-width-one-half">
-
-
         {% set res = role.jobResponsibility.split('•') %}
         {% set resrows = [] %} 
         {% for r in res %}
         <p>{{r}}</p>
         {% set resrows = (resrows.push([{ text: r }]), resrows) %} 
         {% endfor %} 
-        <!-- {{role.jobResponsibility.replace('•', '\n')}} -->
         
       </td>
     </tr>
