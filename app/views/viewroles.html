@@ -27,7 +27,7 @@
     <tr class="govuk-table__row">
       <td class="govuk-table__header govuk-!-width-one-third"><a href="{{role.specification}}">{{role.jobName}}</a></td>
       <td class="govuk-table__header govuk-!-width-one-third">{{role.capabilityName}}</td>
-      <td class="govuk-table__header govuk-!-width-one-half">{{role.bandName}}</td>
+      <td class="govuk-table__header"><a href="viewcompetencies/{{role.bandLevelID}}">{{role.bandLevelName}}</a></td>
       <td class="govuk-table__header govuk-!-width-one-half">{{role.specSummary}}</td>
       <td class="govuk-table__header govuk-!-width-one-half">
         {% set res = role.jobResponsibility.split('•') %}
@@ -38,6 +38,7 @@
         {% endfor %} 
         
       </td>
+      
     </tr>
     {% endfor %} 
 

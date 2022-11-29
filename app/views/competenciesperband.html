@@ -1,0 +1,107 @@
+{% extends "layout.html" %} 
+{% block pageTitle %} 
+  List of Competencies 
+{% endblock %} 
+ 
+{% block content %}
+
+<h1>List of Competencies For Band {{band}}</h1>
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "/viewroles"
+}) }}
+
+{% if comps and comps.length > 0 %} 
+
+{% set PersonalPerformance = [] %} 
+{% set WorkingwithOthers = [] %} 
+{% set SettingDirectionDevelopmentandAccountability = [] %} 
+{% set SupportingandDeliveringtheStrategy = [] %} 
+{% set CommercialityandRisk = [] %} 
+{% set CommunicatingandInfluence = [] %} 
+
+
+{% for comp in comps %}
+
+{% if comp.competencyID ==1 %} 
+{% set PersonalPerformance = (PersonalPerformance.push([{ text: comp.subheading }, {text: comp.information}]), PersonalPerformance) %} 
+{% endif %}
+
+{% if comp.competencyID ==2 %} 
+{% set WorkingwithOthers = (WorkingwithOthers.push([{ text: comp.subheading }, {text: comp.information}]), WorkingwithOthers) %} 
+{% endif %}
+
+{% if comp.competencyID ==3 %} 
+{% set SettingDirectionDevelopmentandAccountability = (SettingDirectionDevelopmentandAccountability.push([{ text: comp.subheading }, {text: comp.information}]), SettingDirectionDevelopmentandAccountability) %} 
+{% endif %}
+
+{% if comp.competencyID ==4 %} 
+{% set SupportingandDeliveringtheStrategy = (SupportingandDeliveringtheStrategy.push([{ text: comp.subheading }, {text: comp.information}]), SupportingandDeliveringtheStrategy) %} 
+{% endif %}
+
+{% if comp.competencyID ==5 %} 
+{% set CommercialityandRisk = (CommercialityandRisk.push([{ text: comp.subheading }, {text: comp.information}]), CommercialityandRisk) %} 
+{% endif %}
+
+{% if comp.competencyID ==6 %} 
+{% set CommunicatingandInfluence = (CommunicatingandInfluence.push([{ text: comp.subheading }, {text: comp.information}]), CommunicatingandInfluence) %} 
+{% endif %}
+
+{% endfor %} 
+
+{{govukTable({ 
+  caption: "Personal Performance",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+    head: [ { text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters" }],  
+    rows: PersonalPerformance }) 
+}} 
+
+{{govukTable({ 
+  caption: "Working with Others",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+    head: [ { text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters" }], 
+    rows: WorkingwithOthers }) 
+}} 
+
+{{govukTable({ 
+  caption: "Setting Direction Development and Accountability",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+    head: [{text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters"}], 
+    rows: SettingDirectionDevelopmentandAccountability }) 
+}} 
+
+{{govukTable({ 
+  caption: "Supporting and Delivering the Strategy",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+    head: [ { text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters" }], 
+    rows: SupportingandDeliveringtheStrategy }) 
+}} 
+
+{{govukTable({ 
+  caption: "Commerciality and Risk",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+    head: [ { text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters" }], 
+    rows: CommercialityandRisk }) 
+}} 
+
+{{govukTable({ 
+  caption: "Communicating and Influence",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+    head: [ { text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters" }], 
+    rows: CommunicatingandInfluence }) 
+}} 
+
+{% else %}
+There are no competencies. 
+{% endif %}
+
+{% endblock %}
