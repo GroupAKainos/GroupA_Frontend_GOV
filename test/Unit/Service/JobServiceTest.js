@@ -2,7 +2,7 @@ const axios = require('axios');
 const MockAdapter = require('axios-mock-adapter');
 const chai = require("chai");
 const expect = chai.expect;
-const EmployeeService = require ('../../../app/service/employee')
+const EmployeeService = require ('../../../app/service/JobService')
 
 const jobroles ={
     jobName:"Test",
@@ -21,10 +21,8 @@ describe('EmployeeService', function () {
     describe('getViewJobRoles', function () {
         it('should return jobroles', async () => {
             var mock = new MockAdapter(axios);
-    
-            const data = jobroles;
-    
-            mock.onGet(url+"/viewjobroles").reply(200, data);
+  
+            mock.onGet(url+"/viewjobroles").reply(200, jobroles);
     
             var results = await EmployeeService.viewjobroles();
             
@@ -45,9 +43,7 @@ describe('getCompetenciesPerBandLevel', function () {
   it('should return competencies for a valid band', async () => {
     var mock = new MockAdapter(axios);
 
-    const data = competencies;
-
-    mock.onGet(url+"/viewcompetency/1").reply(200, data);
+    mock.onGet(url+"/viewcompetency/1").reply(200, competencies);
 
     var results = await EmployeeService.viewcompetency(1);
     
@@ -56,8 +52,6 @@ describe('getCompetenciesPerBandLevel', function () {
 
   it('should throw exception when 500 error returned from axios when invalid role is passed', async () => {
     var mock = new MockAdapter(axios);
-
-    const data = competencies;
 
     mock.onGet(url+"/viewcompetency/9").reply(500);
 
