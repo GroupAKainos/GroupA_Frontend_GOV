@@ -1,4 +1,4 @@
-{% extends "layout.html" %} 
+{% extends "kainos_layout.html" %} 
 {% block pageTitle %} 
   List of Competencies 
 {% endblock %} 
@@ -52,49 +52,43 @@
 
 {% endfor %} 
 
+<h2>Personal Performance</h2>
 {{govukTable({ 
-  caption: "Personal Performance",
-  captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: true,
     head: [ { text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters" }],  
     rows: PersonalPerformance }) 
 }} 
 
+<h2>Working with Others</h2>
 {{govukTable({ 
-  caption: "Working with Others",
-  captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: true,
     head: [ { text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters" }], 
     rows: WorkingwithOthers }) 
 }} 
 
+<h3>Setting Direction Development and Accountability</h3>
 {{govukTable({ 
-  caption: "Setting Direction Development and Accountability",
-  captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: true,
     head: [{text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters"}], 
     rows: SettingDirectionDevelopmentandAccountability }) 
 }} 
 
+<h2>Supporting and Delivering the Strategy</h2>
 {{govukTable({ 
-  caption: "Supporting and Delivering the Strategy",
-  captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: true,
     head: [ { text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters" }], 
     rows: SupportingandDeliveringtheStrategy }) 
 }} 
 
+<h2>Commerciality and Risk</h2>
 {{govukTable({ 
-  caption: "Commerciality and Risk",
-  captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: true,
     head: [ { text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters" }], 
     rows: CommercialityandRisk }) 
 }} 
 
+<h2>Communicating and Influence</h2>
 {{govukTable({ 
-  caption: "Communicating and Influence",
-  captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: true,
     head: [ { text: "Elements", classes: "govuk-!-width-one-quarter"},{ text: "Information", classes: "govuk-!-width-three-quarters" }], 
     rows: CommunicatingandInfluence }) 
