@@ -1,4 +1,5 @@
 const express = require('express')
+const bcrypt = require("bcrypt")
 const router = express.Router()
 
 // Add your routes here - above the module.exports line
@@ -24,7 +25,8 @@ router.get('/register', function(req, res){
 
 router.post('/register', async (req, res)=>{ 
     var user = req.body 
-    let insertedKey = await userData.registerUser(user.email, user.password, user.role)
+    encryptedPassword = await bcrypt.hash(user.password, 10);
+    let response = await userData.registerUser(user.email, encryptedPassword, user.role)
     res.render('register'); 
 });
 

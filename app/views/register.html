@@ -14,13 +14,10 @@
   padding: 20px;
 }
 
-
-/* Add a green text color and a checkmark when the requirements are right */
 .valid {
   color: green;
 }
 
-/* Add a red text color and an "x" icon when the requirements are wrong */
 .invalid {
   color: gray;
 }
@@ -48,9 +45,6 @@ div.hidden
     
         <input class="govuk-input" type=password name="password" id="password" pattern="(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}" value="{{password}}" required><p></p>
     
-    <!--     <strong>Role:</strong> -->
-    
-    <!--     <input class="govuk-input" type=text name="role" id="role" value="{{role}}" required/><p></p> -->
 
     <label class="govuk-label" for="role" >Role:</label>
     <select class="govuk-select" name="role" id="role" value="{{role}}">
@@ -81,7 +75,6 @@ div.hidden
         var special = document.getElementById("special");
         var length = document.getElementById("length");
         
-        // When the user clicks on the password field, show the message box
         myInput.onfocus = function() {
           document.getElementById("message").style.display = "block";
         }
@@ -90,14 +83,11 @@ div.hidden
           document.getElementById("message").style.display = "none";
         }
         
-        // When the user clicks outside of the password field, hide the message box
         myInput.onblur = function() {
           document.getElementById("message").style.display = "none";
         }
         
-        // When the user starts to type something inside the password field
         myInput.onkeyup = function() {
-          // Validate lowercase letters
           var lowerCaseLetters = /[a-z]/g;
           if(myInput.value.match(lowerCaseLetters)) {
             letter.classList.remove("invalid");
@@ -110,7 +100,6 @@ div.hidden
             });
         }
         
-          // Validate capital letters
           var upperCaseLetters = /[A-Z]/g;
           if(myInput.value.match(upperCaseLetters)) {
             capital.classList.remove("invalid");
@@ -123,7 +112,6 @@ div.hidden
             });
           }
         
-          // Validate special character
           var specialChar = /[!@#$%^&*]/g;
           if(myInput.value.match(specialChar)) {
             special.classList.remove("invalid");
@@ -136,7 +124,6 @@ div.hidden
             });
           }
         
-          // Validate length
           if(myInput.value.length >= 8) {
             length.classList.remove("invalid");
             length.classList.add("valid");
