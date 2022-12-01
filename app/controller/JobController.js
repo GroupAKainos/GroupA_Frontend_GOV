@@ -25,6 +25,7 @@ router.get('/addnewjob',  async (req, res) =>  {
 })
 
 router.post('/addnewjob', async (req, res) => { 
+    //Frontend validation - returns the req body and list so user doesnt lose any information they had typed if the check fails
     if(req.body.jobName.length < 5 ){
         let family = await employee.populatefamilylist()
         let capability = await employee.poulatecapabiltynamelist()
@@ -50,6 +51,8 @@ router.post('/addnewjob', async (req, res) => {
     }else{
         let addrole = await employee.addnewrole(req.body)
         
+        // If the value returned from the job service is not equal to an error render the view roles page with added role and message to user
+        // Else populate lists return the data entered and render the addnewroles page with message to let the user know
         if(!(addrole instanceof Error)){
         let message = "New role has been added"
         let s = await employee.viewjobroles()
