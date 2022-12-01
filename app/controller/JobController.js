@@ -16,4 +16,22 @@ router.get('/viewcompetencies/:BandID',  async (req, res) =>  {
     res.render('competenciesperband', { comps: s, band: bandID })
 })
 
+router.get('/addnewjob',  async (req, res) =>  {
+    let family = await employee.populatefamilylist()
+    let capability = await employee.poulatecapabiltynamelist()
+    let bandlevel = await employee.poulatebandlevellist()
+
+   res.render('addnewrole', { family: family, capability:capability, bandlevel: bandlevel})
+})
+
+router.post('/addnewjob', async (req, res) => { 
+console.log(req.body)
+let addrole = await employee.addnewrole(req.body)         
+if(addrole){
+    // let s = await employee.viewjobroles()
+    // res.render('viewroles', { roles: s })
+    res.send(addrole)
+}
+})
+
 module.exports = router

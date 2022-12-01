@@ -1,0 +1,104 @@
+{% extends "kainos_layout.html" %} 
+{% block pageTitle %} 
+Adding new job role 
+{% endblock %} 
+ 
+
+{% block content %}
+<h2>Add new job role</h2>
+</br>
+
+<form class="form" action="/addnewjob" method="POST">
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{{ govukInput({
+  label: {
+    text: "Job Role Name"
+  },
+  errorMessage: {
+    text: "No job role has been entered"
+  },
+  classes: "govuk-input--width-20",
+  id: "jobName",
+  name: "jobName"
+}) }}
+
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{{ govukTextarea({
+  name: "jobResponsibility",
+  id: "jobResponsibility",
+  label: {
+    text: "Job Responsibility"
+  },
+  errorMessage: {
+    text: "No responsibility has been entered"
+  }
+}) }}
+
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{{ govukTextarea({
+  name: "specSummary",
+  id: "specSummary",
+  label: {
+    text: "Job Specification"
+  },
+  errorMessage: {
+    text: "No specification has been entered"
+  }
+}) }}
+
+{% if family and family.length > 0 %} 
+<div class="govuk-form-group">
+    <label class="govuk-label" for="family">
+     Role Family
+    </label>
+    <select class="govuk-select" id="jobFamilyId" name="jobFamilyId" required>
+    
+        {% for fam in family %}
+        <option value="{{fam.listID}}">{{fam.listName}}</option>
+        {% endfor %}
+        
+    </select>
+  </div>
+{% else %}
+No job family 
+{% endif %}
+
+{% if capability and capability.length > 0 %} 
+<div class="govuk-form-group">
+    <label class="govuk-label" for="sort">
+      Capability Family
+    </label>
+    <select class="govuk-select" id="capabilityId" name="capabilityId" required>
+    
+        {% for cap in capability %}
+        <option value="{{cap.listID}}">{{cap.listName}}</option>
+        {% endfor %}
+        
+    </select>
+  </div>
+{% else %}
+No job family 
+{% endif %}
+
+{% if bandlevel and bandlevel.length > 0 %} 
+<div class="govuk-form-group">
+    <label class="govuk-label" for="bandlevel">
+      Band Level
+    </label>
+    <select class="govuk-select" id="bandLevelId" name="bandLevelId" required>
+        {% for band in bandlevel %}
+        <option value="{{band.listID}}">{{band.listName}}</option>
+        {% endfor %}
+    </select>
+  </div>
+{% else %}
+No job family 
+{% endif %}
+
+<button type="submit" class="govuk-button" data-module="govuk-button">
+Add new role  
+</button>
+
+</form>
+
+{% endblock %}
