@@ -8,7 +8,18 @@ const jobroles ={
     jobName:"Test",
     jobResponsibility:"Test"
 }
-
+const listdata = {
+  listID: 1,
+  listName:"data of list"
+}
+const newrole = {
+  "jobName": "This is a test",
+  "jobResponsibility": "This is a test value being added",
+  "specSummary": "This is also a test",
+  "bandLevelId": 1,
+  "jobFamilyId": 1,
+  "capabilityId": 1
+}
 const competencies ={
   competencyID: 1,
   subheading:"Test",
@@ -60,6 +71,102 @@ describe('getCompetenciesPerBandLevel', function () {
     expect(error.message).to.equal('Failed to get comptencies for band')
   })
 
+})
+
+describe('postAddNewJobRole', function () {
+  it('should return valid list of band levels', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onGet(url+"/populatebandlevelist").reply(200, listdata);
+
+    var results = await EmployeeService.poulatebandlevellist()
+    
+    expect(results).to.deep.equal(listdata)
+  })
+
+  it('should throw exception when 500 error returned from axios when calling list band levels', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onGet(url+"/populatebandlevelist").reply(500);
+
+    var error = await EmployeeService.poulatebandlevellist()
+    
+    expect(error.message).to.equal('Failed to get list of band levels')
+  })
+
+  it('should return valid list of capabilites', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onGet(url+"/populatecapabiltylist").reply(200, listdata);
+
+    var results = await EmployeeService.poulatecapabiltynamelist()
+    
+    expect(results).to.deep.equal(listdata)
+  })
+
+  it('should throw exception when 500 error returned from axios when calling list capabilities', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onGet(url+"/populatecapabiltylist").reply(500);
+
+    var error = await EmployeeService.poulatecapabiltynamelist();
+    
+    expect(error.message).to.equal('Failed to get list of capabilites')
+  })
+
+  it('should return valid list of families', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onGet(url+"/populatefamilylist").reply(200, listdata);
+
+    var results = await EmployeeService.populatefamilylist()
+    
+    expect(results).to.deep.equal(listdata)
+  })
+
+  it('should throw exception when 500 error returned from axios when calling list families', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onGet(url+"/populatefamilylist").reply(500);
+
+    var error = await EmployeeService.populatefamilylist();
+    
+    expect(error.message).to.equal('Failed to get list of families')
+  })
+
+  it('should return added job role from axios when valid data is passed', async () => {
+    var mock = new MockAdapter(axios);
+      let body = { 
+      jobName: 'This is a test',
+      jobResponsibility: "This is a test value being added",
+      specSummary: "This is also a test",
+      bandLevelId: 1,
+      jobFamilyId: 1,
+      capabilityId: 1
+    }
+    mock.onPost(url+"/addnewrole", body).reply(201, body)
+
+    var results = await EmployeeService.addnewrole(body);
+   
+    expect(results).to.deep.equal(body)
+  })
+
+  it('should return exception when 500 error returned from axios when calling addNewRole', async () => {
+    var mock = new MockAdapter(axios);
+      let body = { 
+      jobName: 'This is a test',
+      jobResponsibility: "This",
+      specSummary: "This is also a test",
+      bandLevelId: 1,
+      jobFamilyId: 1,
+      capabilityId: 1
+    }
+    mock.onPost(url+"/addnewrole", body).reply(500)
+
+    var results = await EmployeeService.addnewrole(body);
+   
+    expect(results.message).to.equal('Failed to add new role')
+  })
 })
 
 })

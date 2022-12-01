@@ -8,29 +8,29 @@ Adding new job role
 <h2>Add new job role</h2>
 </br>
 
+{% if errormessage %} 
+<div class="govuk-error-message">{{ errormessage }}</div> 
+{% endif %}
+
 <form class="form" action="/addnewjob" method="POST">
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {{ govukInput({
   label: {
     text: "Job Role Name"
   },
-  errorMessage: {
-    text: "No job role has been entered"
-  },
   classes: "govuk-input--width-20",
   id: "jobName",
-  name: "jobName"
+  name: "jobName",
+  value:data["jobName"]
 }) }}
 
 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {{ govukTextarea({
   name: "jobResponsibility",
   id: "jobResponsibility",
+  value:data["jobResponsibility"],
   label: {
     text: "Job Responsibility"
-  },
-  errorMessage: {
-    text: "No responsibility has been entered"
   }
 }) }}
 
@@ -38,11 +38,10 @@ Adding new job role
 {{ govukTextarea({
   name: "specSummary",
   id: "specSummary",
+  required: "true",
+  value:data["specSummary"],
   label: {
     text: "Job Specification"
-  },
-  errorMessage: {
-    text: "No specification has been entered"
   }
 }) }}
 
@@ -52,9 +51,15 @@ Adding new job role
      Role Family
     </label>
     <select class="govuk-select" id="jobFamilyId" name="jobFamilyId" required>
-    
+      <p id="email-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span> Enter an email address in the correct format, like name@example.com
+      </p>
         {% for fam in family %}
-        <option value="{{fam.listID}}">{{fam.listName}}</option>
+        {% if fam.listID == data["jobFamilyId"] %}
+        <option selected value="{{fam.listID}}">{{fam.listName}}</option>
+        {% else %}
+        <option  value="{{fam.listID}}">{{fam.listName}}</option>
+        {% endif %}
         {% endfor %}
         
     </select>
@@ -71,7 +76,11 @@ No job family
     <select class="govuk-select" id="capabilityId" name="capabilityId" required>
     
         {% for cap in capability %}
+        {% if cap.listID == data["capabilityId"] %}
+        <option selected value="{{cap.listID}}">{{cap.listName}}</option>
+        {% else %}
         <option value="{{cap.listID}}">{{cap.listName}}</option>
+        {% endif %}
         {% endfor %}
         
     </select>
@@ -87,7 +96,11 @@ No job family
     </label>
     <select class="govuk-select" id="bandLevelId" name="bandLevelId" required>
         {% for band in bandlevel %}
+        {% if band.listID == data["bandLevelId"] %}
+        <option selected value="{{band.listID}}">{{band.listName}}</option>
+        {% else %}
         <option value="{{band.listID}}">{{band.listName}}</option>
+        {% endif %}
         {% endfor %}
     </select>
   </div>
