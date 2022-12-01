@@ -27,7 +27,12 @@ router.post('/register', async (req, res)=>{
     var user = req.body 
     encryptedPassword = await bcrypt.hash(user.password, 10);
     let response = await userData.registerUser(user.email, encryptedPassword, user.role)
-    res.render('register'); 
+    if(response.token!==null) {
+        res.render('register', {success: 'true'}); 
+    }
+    else {
+        res.render('register', {success: 'false'}); 
+    }
 });
 
 module.exports = router
