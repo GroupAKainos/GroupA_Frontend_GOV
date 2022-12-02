@@ -11,7 +11,7 @@ router.get('/register', function(req, res){
 router.post('/register', async (req, res)=>{ 
     let user = req.body
     let encryptedPassword = await bcrypt.hash(user.password, 10)
-    let response = await userData.registerUser(user.email, encryptedPassword, user.role)
+    let response = await userData.registerUser(user.email, encryptedPassword, user.role, user.firstName, user.lastName)
     try {
         if(!response.data.token!=null) {
             res.render('register', {success: 'true'})
@@ -21,12 +21,6 @@ router.post('/register', async (req, res)=>{
     } catch (e) {
         res.render('register', {success: 'false'})
     }
-    // if(!response.includes('Erorr')) {
-    //     res.render('register', {success: 'true'})
-    // }
-    // else {
-    //     res.render('register', {success: 'false'})
-    //}
 });
 
 module.exports = router

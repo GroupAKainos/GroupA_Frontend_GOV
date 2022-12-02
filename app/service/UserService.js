@@ -1,9 +1,9 @@
 const axios = require('axios');
 const url = process.env.URL
 
-exports.registerUser = async (email, password, role) => { 
+exports.registerUser = async (email, password, role, firstName, lastName) => { 
     try {
-        const response = await axios.post(url+'/register', { email: email, password: password, role: role })
+        const response = await axios.post(url+'/register', { email: email, password: password, role: role , firstName: firstName, lastName: lastName})
         return response
     } catch (e) {
         if((e+'').includes('Request failed with status code 500'))

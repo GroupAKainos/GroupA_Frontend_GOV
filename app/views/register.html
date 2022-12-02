@@ -12,6 +12,7 @@
   background: #f1f1f1;
   color: #000;
   padding: 20px;
+  padding-bottom: 240px;
 }
 
 .valid {
@@ -43,6 +44,14 @@ div.hidden
     <h1 class="govuk-heading-xl">Register</h1>
     
     <form class="govuk-form-group" method="post">
+
+        <strong>First name:</strong>
+
+        <label for="first name"></label><input class="govuk-input" type=text name="firstName" id="firstName" value="{{firstName}}" required/> <p></p>
+
+        <strong>Last name:</strong>
+
+        <label for="last name"></label><input class="govuk-input" type=text name="lastName" id="lastName" value="{{lastName}}" required/> <p></p>
     
         <strong>Email:</strong>
     
