@@ -14,20 +14,20 @@ const user ={
 describe('UserService', function () {
     describe('registerUser', function () {
         it('should return error 500', async () => {
-            var mock = new MockAdapter(axios);
+            let mock = new MockAdapter(axios);
 
             mock.onPost(url+"/register").reply(500);
 
-            var error = await EmployeeService.registerUser(user.email, user.password, user.role)
+            let error = await EmployeeService.registerUser(user.email, user.password, user.role)
         
             expect(error.message).to.equal('Could not register user')
         })
         it('should return error 400', async () => {
-            var mock = new MockAdapter(axios);
+            let mock = new MockAdapter(axios);
 
             mock.onPost(url+"/register").reply(400);
 
-            var error = await EmployeeService.registerUser(user.email, user.password, user.role)
+            let error = await EmployeeService.registerUser(user.email, user.password, user.role)
         
             expect(error.message).to.equal('Invalid data')
         })
