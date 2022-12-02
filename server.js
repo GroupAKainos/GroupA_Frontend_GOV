@@ -20,7 +20,8 @@ const middleware = [
 ]
 const config = require('./app/config.js')
 const packageJson = require('./package.json')
-const routes = require('./app/controller/JobController.js')
+const user = require('./app/controller/UserController.js')
+const job = require('./app/controller/JobController.js')
 const utils = require('./lib/utils.js')
 const extensions = require('./lib/extensions/extensions.js')
 
@@ -171,12 +172,13 @@ app.post('/prototype-admin/clear-data', function (req, res) {
   res.render('prototype-admin/clear-data-success')
 })
 
-if (typeof (routes) !== 'function') {
-  console.log(routes.bind)
+if (typeof (user) !== 'function') {
+  console.log(user.bind)
   console.log('Warning: the use of bind in routes is deprecated - please check the Prototype Kit documentation for writing routes.')
-  routes.bind(app)
+  user.bind(app)
 } else {
-  app.use('/', routes)
+  app.use('/', user)
+  app.use('/', job)
 }
 
 if (useV6) {
