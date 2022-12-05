@@ -12,6 +12,6 @@ router.get('/CheckFormality',isAuth.Admin ,async (req, res) =>  {
 
 router.post('/CheckFormality',isAuth.Admin ,async (req, res) =>  {
     let s = await ai.checkformality(req.body)
-    res.render('viewroles', { roles: s })
+    res.render('OutputFormality', { formality: s })
 })
 

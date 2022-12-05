@@ -1,0 +1,30 @@
+{% extends "kainos_layout.html" %} 
+{% block pageTitle %} 
+  List of Competencies 
+{% endblock %} 
+ 
+{% block content %}
+
+<h1>List of Competencies For Band {{band}}</h1>
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{% if formality and formality.length > 0 %} 
+
+{% set Formality = [] %} 
+{% for form in formality %}
+{% set Formality = (Formality.push([{ text: form.sentence }, {text: form.scores}, {text: form.formality}]), Formality) %} 
+{% endfor %} 
+
+<h2>Formality Score</h2>
+{{govukTable({ 
+  firstCellIsHeader: true,
+    head: [ { text: "Sentence", classes: "govuk-!-width-one-half"},{ text: "Score", classes: "govuk-!-width-one-third" }, {text: "Formality", classes: "govuk-!-width-one-third"}],  
+    rows: Formality }) 
+}} 
+
+{% else %}
+There are no formality scores available. 
+{% endif %}
+
+{% endblock %}
