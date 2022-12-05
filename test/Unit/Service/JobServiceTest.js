@@ -192,8 +192,29 @@ describe('postAddNewJobRole', function () {
     mock.onPost(url+"/addnewrole", body).reply(500)
 
     var results = await EmployeeService.addnewrole(body);
-   
+   describe('getRoleForUpdate', function () {
+  it('should return role to be updated', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onGet(url+"/viewupdatejob/1").reply(200, updRole);
+
+    var results = await EmployeeService.viewjob(1);
+    
+    expect(results).to.deep.equal(updRole)
+  })
+
+  it('should throw exception when 500 error returned from axios when invalid role is passed', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onGet(url+"/viewupdatejob/0").reply(500);
+
+    var error = await EmployeeService.viewjob(0);
+    
     expect(results.message).to.equal('Failed to add new role')
+  })
+})
+
+    expect(error.message).to.equal('Failed to get job roles')
   })
 })
 
