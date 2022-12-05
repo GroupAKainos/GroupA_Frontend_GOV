@@ -1,10 +1,12 @@
 const express = require('express')
 const router = express.Router()
-
 // Add your routes here - above the module.exports line
 const job = require('../service/JobService')
+var cookieParser = require('cookie-parser')
+router.use(cookieParser());
+const isAuth = require('../middleware/Authorisation')
 
-router.get('/viewroles',  async (req, res) =>  {
+router.get('/viewroles',isAuth.Employee ,async (req, res) =>  {
     let s = await job.viewjobroles()
     res.render('viewroles', { roles: s })
 })
@@ -16,7 +18,7 @@ router.get('/viewcompetencies/:BandID',  async (req, res) =>  {
     res.render('competenciesperband', { comps: s, band: bandID })
 })
 
-router.get('/addnewjob',  async (req, res) =>  {
+router.get('/addnewjob',isAuth.Admin ,async (req, res) =>  {
     let family = await job.populatefamilylist()
     let capability = await job.poulatecapabiltynamelist()
     let bandlevel = await job.poulatebandlevellist()

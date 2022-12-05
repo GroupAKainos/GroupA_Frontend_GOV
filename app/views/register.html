@@ -40,6 +40,9 @@ div.hidden
       {% if success == 'false' %} 
         <p class="govuk-error-message" style="color: red;">Failed to register user!</p>
       {% endif %}
+      {% if auth == 'false' %} 
+        <p class="govuk-error-message" style="color: red;">Not authorised!</p>
+      {% endif %}
     
     <h1 class="govuk-heading-xl">Register</h1>
     
