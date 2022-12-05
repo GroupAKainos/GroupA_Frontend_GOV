@@ -1,0 +1,33 @@
+{% extends "kainos_layout.html" %} 
+{% block pageTitle %} 
+Adding new job role 
+{% endblock %} 
+ 
+
+{% block content %}
+<h2>Check Formality</h2>
+</br>
+
+{% if errormessage %} 
+<div class="govuk-error-message">{{ errormessage }}</div> 
+{% endif %}
+
+<form class="form" action="/addnewjob" method="POST">
+
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{{ govukTextarea({
+  name: "jobResponsibility",
+  id: "jobResponsibility",
+  value:data["jobResponsibility"],
+  label: {
+    text: "Check Score"
+  }
+}) }}
+
+<button type="submit" class="govuk-button" data-module="govuk-button">
+Check Score  
+</button>
+
+</form>
+
+{% endblock %}
