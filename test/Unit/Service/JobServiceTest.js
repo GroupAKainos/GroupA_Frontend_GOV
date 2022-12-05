@@ -26,6 +26,15 @@ const competencies ={
   information:"Test Information"
 }
 
+const updRole = {
+  jobid: 1,
+  jobName: "Test",
+  specSummary: "Test",
+  capabilityId: 1,
+  bandLevelID: 1,
+  jobResponsibility: "Test"
+}
+
 const url = process.env.URL;
 
 describe('EmployeeService', function () {
@@ -70,7 +79,47 @@ describe('getCompetenciesPerBandLevel', function () {
     
     expect(error.message).to.equal('Failed to get comptencies for band')
   })
+})
+describe('getRoleForUpdate', function () {
+  it('should return role to be updated', async () => {
+    var mock = new MockAdapter(axios);
 
+    mock.onGet(url+"/viewupdatejob/1").reply(200, updRole);
+
+    var results = await EmployeeService.viewjob(1);
+    
+    expect(results).to.deep.equal(updRole)
+  })
+
+  it('should throw exception when 500 error returned from axios when invalid role is passed', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onGet(url+"/viewupdatejob/0").reply(500);
+
+    var error = await EmployeeService.viewjob(0);
+        expect(error.message).to.equal('Failed to get job roles')
+  })
+})
+describe('getRoleForUpdate', function () {
+  it('should return role to be updated', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onGet(url+"/viewupdatejob/1").reply(200, updRole);
+
+    var results = await EmployeeService.viewjob(1);
+    
+    expect(results).to.deep.equal(updRole)
+  })
+
+  it('should throw exception when 500 error returned from axios when invalid role is passed', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onGet(url+"/viewupdatejob/0").reply(500);
+
+    var error = await EmployeeService.viewjob(0);
+    
+    expect(error.message).to.equal('Failed to get job roles')
+  })
 })
 
 describe('postAddNewJobRole', function () {

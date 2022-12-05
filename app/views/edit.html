@@ -1,0 +1,68 @@
+{% extends "kainos_layout.html" %} 
+{% block pageTitle %} 
+  List of Roles 
+{% endblock %} 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+{% block content %}
+
+{% if roles %}
+<form class="form" action="/editrole" method="post">
+  <div class="govuk-form-group">
+    <textarea hidden="hidden" id="jobid" name="jobid" value="{{jobid}}" type="text">{{roles.jobid}}</textarea>
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--l" for="jobName">Role Name</label>
+    </h1>
+    <textarea class="govuk-input" id="jobName" name="jobName" value="{{jobName}}" type="text" required>{{roles.jobName}}</textarea>
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--l" for="specSummary">Spec Summary</label>
+    </h1>
+    <textarea class="govuk-textarea" rows=8 id="specSummary" name="specSummary" value="{{specSummary}}" type="text" required>{{roles.specSummary}}</textarea>
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--l" for="jobResponsibility">Job Responsibility</label>
+    </h1>
+    <textarea class="govuk-textarea" rows=8 id="jobResponsibility" name="jobResponsibility"value="{{jobResponsibility}}" type="text" required>{{roles.jobResponsibility}}</textarea>
+    <label class="govuk-label" for="sort">
+      Capability
+    </label>
+    <select style="width: 350px;" class="govuk-select" id="capabilityId" name="capabilityId">
+      <option value={{roles.capabilityID}}>No Change</option>
+      <option value=1>Engineering</option>
+      <option value=2>Platforms</option>
+      <option value=3>Data</option>
+      <option value=4>Artifical Intelligence</option>
+      <option value=5>Cyber Security</option>
+      <option value=6>Workday</option>
+      <option value=7>Experience Design</option>
+      <option value=8>Product</option>
+      <option value=9>Delivery</option>
+      <option value=10>Operations</option>
+      <option value=11>Business Development & Marketing</option>
+      <option value=12>Organisational Strategy & Planning</option>
+      <option value=13>People</option>
+      <option value=14>Commercial & Financial Management</option>
+      <option value=15>Business Services Support</option>
+    </select>
+  <label class="govuk-label" for="bandLevelId">
+    Job Band
+  </label>
+  <select style="width: 350px;" class="govuk-select" id="bandLevelId" name="bandLevelId">
+    <option value={{roles.bandLevelID}}>No Change</option>
+    <option value=1>Apprentice</option>
+    <option value=2>Trainee</option>
+    <option value=3>Associate</option>
+    <option value=4>Senior Associate</option>
+    <option value=5>Consultant</option>
+    <option value=6>Manager</option>
+    <option value=7>Manager working towards Principal</option>
+    <option value=8>Principal</option>
+    <option value=9>Leader</option>
+    <option value=10>Executive</option>
+  </select>
+</div>
+  <button class="govuk-button" id="submit">Submit</button>
+</form>
+{% else %}
+Employee does not exist
+{% endif %}
+{% endblock %}
