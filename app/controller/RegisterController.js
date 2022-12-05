@@ -5,6 +5,7 @@ const router = express.Router()
 
 const userData = require('../service/RegisterService')
 
+
 router.get('/register', function(req, res){ 
     res.render('register'); 
 });
@@ -16,6 +17,10 @@ router.post('/register', async (req, res)=>{
     try {
         if(response.data.token!==undefined) {
             res.render('register', {success: 'true'})
+            }else{
+            res.redirect(redirectTo);
+            }
+
         } else {
             res.render('register', {success: 'false'})
         }  
