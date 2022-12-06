@@ -31,8 +31,6 @@ exports.loginUser = async (email, password) => {
 
 exports.Decrypt = async (tokenToDeCrypt) => {
     var parsedBase64Key = CryptoJS.enc.Base64.parse(secretJ);
-    console.log("THIS IS A TESTSDASD: " +parsedBase64Key)
-
     var decryptedData = CryptoJS.AES.decrypt(tokenToDeCrypt, parsedBase64Key, {
         mode: CryptoJS.mode.ECB,
         padding: CryptoJS.pad.Pkcs7

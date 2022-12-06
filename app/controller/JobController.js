@@ -3,19 +3,19 @@ const router = express.Router()
 var cookieParser = require('cookie-parser')
 router.use(cookieParser());
 const isAuth = require('../middleware/Authorisation')
-
-// Add your routes here - above the module.exports line
 const job = require('../service/JobService')
-var cookieParser = require('cookie-parser')
-router.use(cookieParser());
-const isAuth = require('../middleware/Authorisation')
+// Add your routes here - above the module.exports line
 
-router.get('/viewroles',isAuth.Employee,  async (req, res) =>  {
-    let s = await job.viewjobroles()
-    res.render('viewroles', { roles: s })
+router.get('/viewroles', isAuth.Employee,  async (req, res) =>  {
+
+        let s = await job.viewjobroles();
+        let data = await isAuth.ReturnRole(req)
+        res.render('viewroles', { roles: s, role: data} )
+    
+ 
 })
 
-router.get('/viewcompetencies/:BandID',  async (req, res) =>  {
+router.get('/viewcompetencies/:BandID', isAuth.Employee, async (req, res) =>  {
     let bandID = req.params.BandID
     let s = await job.viewcompetency(bandID)
 
@@ -30,7 +30,7 @@ router.get('/addnewjob',isAuth.Admin ,async (req, res) =>  {
    res.render('addnewjob', { family: family, capability:capability, bandlevel: bandlevel})
 })
 
-router.post('/addnewjob', async (req, res) => { 
+router.post('/addnewjob', isAuth.Admin, async (req, res) => { 
     //Frontend validation - returns the req body and list so user doesnt lose any information they had typed if the check fails
     if(req.body.jobName.length < 5 ){
         let family = await job.populatefamilylist()
