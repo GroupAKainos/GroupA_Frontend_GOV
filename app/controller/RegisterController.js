@@ -37,7 +37,6 @@ router.get('/login', function (req, res) {
 router.post('/login', async (req, res) => {
     let user = req.body
     let encryptedPassword = await sha512.hmac(secret, user.password);
-    console.log(encryptedPassword)
     let response = await userData.loginUser(user.email, encryptedPassword)
     try {
         if (response.data.token !== undefined) {
