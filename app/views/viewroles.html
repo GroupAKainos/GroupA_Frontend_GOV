@@ -9,7 +9,12 @@
 <div class="container">
 
   <h2>View Jobs</h2>
-
+  <form class="form" action="/addnewjob" method="GET">
+    <button type="submit" class="govuk-button" data-module="govuk-button">
+    Add new role  
+   </button>
+  </form>
+  
   {% if newrolesuccess %} 
   <strong class="govuk-tag">
     {{newrolesuccess}}
