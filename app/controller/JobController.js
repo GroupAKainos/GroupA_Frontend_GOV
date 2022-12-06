@@ -69,8 +69,11 @@ router.post('/addnewjob', async (req, res) => {
     }
 })
 
-router.get('/editrole/:id', async (req, res) => {     
-    res.render('edit', { roles: await job.viewjob(req.params.id)} ) 
+router.get('/editrole/:id', async (req, res) => {   
+    let capability = await job.poulatecapabiltynamelist()
+    let bandlevel = await job.poulatebandlevellist()
+
+    res.render('edit', { roles: await job.viewjob(req.params.id), capability:capability, bandlevel: bandlevel} ) 
 });
 
 router.post('/editrole', async (req, res) => {

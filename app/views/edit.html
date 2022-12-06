@@ -25,40 +25,36 @@
     <label class="govuk-label" for="sort">
       Capability
     </label>
-    <select style="width: 350px;" class="govuk-select" id="capabilityId" name="capabilityId">
-      <option value={{roles.capabilityID}}>No Change</option>
-      <option value=1>Engineering</option>
-      <option value=2>Platforms</option>
-      <option value=3>Data</option>
-      <option value=4>Artifical Intelligence</option>
-      <option value=5>Cyber Security</option>
-      <option value=6>Workday</option>
-      <option value=7>Experience Design</option>
-      <option value=8>Product</option>
-      <option value=9>Delivery</option>
-      <option value=10>Operations</option>
-      <option value=11>Business Development & Marketing</option>
-      <option value=12>Organisational Strategy & Planning</option>
-      <option value=13>People</option>
-      <option value=14>Commercial & Financial Management</option>
-      <option value=15>Business Services Support</option>
+    {% if capability and capability.length > 0 %} 
+    <select style="width: 350px" class="govuk-select" id="capabilityId" name="capabilityId" required>
+    
+        {% for cap in capability %}
+        {% if cap.listID == roles.capabilityID %}
+        <option selected value={{roles.capabilityID}}>{{cap.listName}}</option>
+        {% else %}
+        <option value="{{cap.listID}}">{{cap.listName}}</option>
+        {% endif %}
+        {% endfor %}
     </select>
+    {% else %}
+No job capabilities 
+{% endif %}
   <label class="govuk-label" for="bandLevelId">
     Job Band
   </label>
-  <select style="width: 350px;" class="govuk-select" id="bandLevelId" name="bandLevelId">
-    <option value={{roles.bandLevelID}}>No Change</option>
-    <option value=1>Apprentice</option>
-    <option value=2>Trainee</option>
-    <option value=3>Associate</option>
-    <option value=4>Senior Associate</option>
-    <option value=5>Consultant</option>
-    <option value=6>Manager</option>
-    <option value=7>Manager working towards Principal</option>
-    <option value=8>Principal</option>
-    <option value=9>Leader</option>
-    <option value=10>Executive</option>
-  </select>
+  {% if bandlevel and bandlevel.length > 0 %} 
+  <select style="width: 350px" class="govuk-select" id="bandLevelId" name="bandLevelId" required>
+    {% for band in bandlevel %}
+    {% if band.listID == roles.bandLevelID %}
+    <option selected value={{roles.bandLevelID}}>{{band.listName}}</option>
+    {% else %}
+    <option value="{{band.listID}}">{{band.listName}}</option>
+    {% endif %}
+    {% endfor %}
+</select>
+{% else %}
+No job bands
+{% endif %}
 </div>
   <button class="govuk-button" id="submit">Submit</button>
 </form>
