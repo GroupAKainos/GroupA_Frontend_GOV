@@ -108,10 +108,20 @@
 
   <h2>View Jobs</h2>
 
+<table>
+
+  <form class="form" action="/addnewjob" method="GET">
+    <button type="submit" class="govuk-button" button style="margin:2px" data-module="govuk-button">
+    Add new role  
+   </button>
+  </form>
+
+  <input type="button" class="govuk-button"  id="delButton" disabled="true" value="Delete Role"  button style="margin:2px" onclick="doDeleteJobRoles()"/>
   <div id="spinner" class="loading">
   </div>
 
-  <input type="button" class="govuk-button"  id="delButton" disabled="true" value="Delete" onclick="doDeleteJobRoles()"/>
+
+</table>
 
   {% if newrolesuccess %} 
   <strong class="govuk-tag">
