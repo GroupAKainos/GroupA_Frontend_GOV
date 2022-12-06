@@ -5,6 +5,11 @@ Adding new job role
 
 {% block content %}
 <h2>Add new job role</h2>
+
+{{ govukBackLink({
+  text: "Back",
+  href: "/viewroles"
+}) }}
 </br>
 
 {% if errormessage %}
