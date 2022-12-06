@@ -16,7 +16,7 @@ router.post('/register', async (req, res)=>{
     let encryptedPassword = await sha512.hmac(secret, user.password);
     let response = await userData.registerUser(user.email, encryptedPassword, user.role, user.firstName, user.lastName)
     try {
-        if(!response.data.token!=null) {
+        if(response.data.token!==undefined) {
             res.render('register', {success: 'true'})
         } else {
             res.render('register', {success: 'false'})
