@@ -4,7 +4,7 @@ const sha512 = require('js-sha512');
 const router = express.Router()
 var cookieParser = require('cookie-parser')
 router.use(cookieParser());
-const userData = require('../service/UserService')
+const userData = require('../service/RegisterService')
 
 
 router.get('/register', function (req, res) {
@@ -18,11 +18,8 @@ router.post('/register', async (req, res) => {
     try {
         if(response.data.token!==undefined) {
             res.render('register', {success: 'true'})
-            }else{
-            res.redirect(redirectTo);
             }
-
-        } else {
+            else {
             res.render('register', { success: 'false' })
         }
     } catch (e) {

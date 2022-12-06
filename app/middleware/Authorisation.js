@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const jwt_decode = require('jwt-decode');
-const decrypt = require('../service/UserService')
+const decrypt = require('../service/AuthorisationService')
 
 module.exports.Employee = async (req, res, next) => {
     try {
