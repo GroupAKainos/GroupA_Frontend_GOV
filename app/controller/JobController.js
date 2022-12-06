@@ -5,9 +5,11 @@ const job = require('../service/JobService')
 var cookieParser = require('cookie-parser')
 router.use(cookieParser());
 const isAuth = require('../middleware/Authorisation')
+const ai = require("../service/AIService")
 
-router.get('/viewroles',isAuth.Employee ,async (req, res) =>  {
+router.get('/viewroles' ,async (req, res) =>  {
     let s = await job.viewjobroles()
+    console.log(s)
     res.render('viewroles', { roles: s })
 })
 
@@ -70,4 +72,24 @@ router.post('/addnewjob', async (req, res) => {
     }
 })
 
+router.get('/formality', async (req, res) =>  {
+    res.render('CheckFormality')
+})
+
+router.post('/formality' ,async (req, res) =>  {
+    let s = await ai.checkformality(req.body.jobResponsibility)
+    let array = []
+    let object;
+    //Format into consumable JSON object
+    for (let i = 0; i < s.sentences.length; i++) {
+        object = {
+            sentences: s.sentences[i],
+            scores: s.scores[i],
+            formality: s.formality[i]
+        }
+        array.push(object)
+      }
+
+    res.render('OutputFormality', {datareturned: array })
+})
 module.exports = router

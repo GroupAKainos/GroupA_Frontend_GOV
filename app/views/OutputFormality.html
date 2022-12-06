@@ -9,22 +9,19 @@
 
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
-{% if formality and formality.length > 0 %} 
 
-{% set Formality = [] %} 
-{% for form in formality %}
-{% set Formality = (Formality.push([{ text: form.sentence }, {text: form.scores}, {text: form.formality}]), Formality) %} 
+
+{% set Scores = [] %} 
+{% for data in datareturned %}
+{% set Scores = (Scores.push([{text: data.sentences}, {text: data.scores}, {text: data.formality}]), Scores) %} 
 {% endfor %} 
 
 <h2>Formality Score</h2>
 {{govukTable({ 
   firstCellIsHeader: true,
-    head: [ { text: "Sentence", classes: "govuk-!-width-one-half"},{ text: "Score", classes: "govuk-!-width-one-third" }, {text: "Formality", classes: "govuk-!-width-one-third"}],  
-    rows: Formality }) 
+    head: [ { text: "Sentences", classes: "govuk-!-width-one-half"},{ text: "Score", classes: "govuk-!-width-one-third" }, {text: "Formality", classes: "govuk-!-width-one-third"}],  
+    rows: Scores  }) 
 }} 
 
-{% else %}
-There are no formality scores available. 
-{% endif %}
 
 {% endblock %}
