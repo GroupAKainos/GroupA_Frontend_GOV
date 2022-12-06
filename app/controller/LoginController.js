@@ -16,7 +16,8 @@ router.post('/login', async (req, res)=>{
     try {
         if(response.data.token!==undefined) {
                 res.cookie('auth', response.data.token, {secure:true})
-                res.render('login', {success: 'true'})
+                //res.render('login', {success: 'true'})
+                return res.redirect('/viewroles')
             } else {
                 res.render('login', {success: 'false'})
             }  
