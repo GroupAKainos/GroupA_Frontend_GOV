@@ -176,7 +176,7 @@ describe('postAddNewJobRole', function () {
 
     var results = await EmployeeService.addnewrole(body);
    
-    expect(results).to.deep.equal(body)
+    expect(results).to.deep.equal(newrole)
   })
 
   it('should return exception when 500 error returned from axios when calling addNewRole', async () => {
