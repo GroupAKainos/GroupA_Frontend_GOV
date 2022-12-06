@@ -6,36 +6,73 @@
 
 {% block content %}
 
+<style type="text/css">
+
+  #spinner {
+      display: none;
+  }
+
+  .loading {
+      border: 2px solid #ccc;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border-top-color: #1ecd97;
+      border-left-color: #1ecd97;
+      animation: spin 1s infinite ease-in;
+  }
+
+  @keyframes spin {
+      0% {
+          transform: rotate(0deg);
+      }
+      100% {
+          transform: rotate(360deg);
+      }
+  }
+</style>
+
+<script type="text/javascript">
+  function spinner() {
+      document.getElementById("spinner").style.display = "block";
+  }
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
 
+    function doControlDeleteBtnEnabled() {
+      var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+      var delBtn = document.getElementById("delButton");
+      if(checkboxes.length > 0) {
+        delBtn.removeAttribute("disabled");
+      } else {
+        delBtn.setAttribute("disabled", true);
+      }
+    }
+
     function doDeleteJobRoles() {
 
-      confirm("Are you sure want to delete your selected roles?  Hint: Please refresh your page after selecting OK");
-      
-      console.log("Msg 0: About to call deleteRoles() method ..");
+     if(confirm("Are you sure want to delete your selected roles?  Hint: May take a few seconds")){
+        spinner();
 
-      deleteRoles()
-      .then(
-        setTimeout(() => {
-          console.log("Msg 1: Timeout completed - reloading list page");
-          //document.location.reload();
-        }, 5000)
-       //window.location='/viewroles'
+        deleteRoles()
+       .then( () => { 
+        console.log("The deleteRoles() method returned successfully"); }
       )
       .catch(err => {
-        console.log("Msg 2: The deleteRoles() method returned an error");
+        console.log("The deleteRoles() method returned an error");
         console.log(err)
       });
 
       return true;
+     } else return false;
+      
     }
 
     async function deleteRoles() {
       
-      console.log("Msg 3: Entered deleteRoles() method");
-
       // Collect all checked checkboxes
       var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
 
@@ -51,43 +88,17 @@
         return false;
       }
 
-      console.log("Msg 4: Calling back-end delete routine ... ");
-
-      // const headers = {
-      //   'Content-Type': 'application/json',
-      //   'Access-Control-Allow-Origin': 'true'
-      // }
-
       // Post the form - how to get this url from env?
-      const res = await axios.post('//localhost:8080/api/deletejobroles', jobIdString
-        //, { headers : headers }
-      );
-
-      // axios.post(Helper.getUserAPI(), data, {
-      //   headers: headers
-      // })
-      //   .then((response) => {
-      //     dispatch({
-      //       type: FOUND_USER,
-      //       data: response.data[0]
-      //     })
-      //   })
-      //   .catch((error) => {
-      //     dispatch({
-      //       type: ERROR_FINDING_USER
-      //     })
-      //   })
-
-
-      console.log("Msg 5: Returned from back-end delete routine");
+      const res = await axios.post('//localhost:8080/api/deletejobroles', jobIdString)
+      .then((response) => {
+        console.log("POST request to /api/deletejobroles succeeded");
+      })
+      .catch((error) => {
+        console.log("POST request to /api/deletejobroles FAILED!!");
+      })
 
       // refresh the jobsList screen
-      //window.location.reload(true);
-      
-      // log result on console
-      console.log(res.data);
-
-      console.log("Msg 6: Leaving deleteRoles() method");
+      window.location.reload(true);
     }
 
 </script>
@@ -97,7 +108,10 @@
 
   <h2>View Jobs</h2>
 
-  <input type="button" class="govuk-button"  id="delButton" value="Delete" onclick="doDeleteJobRoles()"/>
+  <div id="spinner" class="loading">
+  </div>
+
+  <input type="button" class="govuk-button"  id="delButton" disabled="true" value="Delete" onclick="doDeleteJobRoles()"/>
 
   {% if newrolesuccess %} 
   <strong class="govuk-tag">
@@ -122,7 +136,7 @@
 
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <td class="govuk-table__header govuk-!-width-one-third"><input type="checkbox" id="delCheckBox" class="delChkClass" value="{{role.jobid}}" /> </td>
+      <td class="govuk-table__header govuk-!-width-one-third"><input type="checkbox" id="delCheckBox" class="delChkClass" onclick="doControlDeleteBtnEnabled()" value="{{role.jobid}}" /> </td>
       <td class="govuk-table__header govuk-!-width-one-third"><a href="{{role.specification}}">{{role.jobName}}</a></td>
       <td class="govuk-table__header govuk-!-width-one-third">{{role.capabilityName}}</td>
       <td class="govuk-table__header"><a href="viewcompetencies/{{role.bandLevelID}}">{{role.bandLevelName}}</a></td>
