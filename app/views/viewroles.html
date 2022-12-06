@@ -6,9 +6,98 @@
 
 {% block content %}
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+
+    function doDeleteJobRoles() {
+
+      confirm("Are you sure want to delete your selected roles?  Hint: Please refresh your page after selecting OK");
+      
+      console.log("Msg 0: About to call deleteRoles() method ..");
+
+      deleteRoles()
+      .then(
+        setTimeout(() => {
+          console.log("Msg 1: Timeout completed - reloading list page");
+          //document.location.reload();
+        }, 5000)
+       //window.location='/viewroles'
+      )
+      .catch(err => {
+        console.log("Msg 2: The deleteRoles() method returned an error");
+        console.log(err)
+      });
+
+      return true;
+    }
+
+    async function deleteRoles() {
+      
+      console.log("Msg 3: Entered deleteRoles() method");
+
+      // Collect all checked checkboxes
+      var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+
+      // Establish jobIdString content for the request
+      var jobIdString = "";
+      for (var i = 0; i < checkboxes.length; i++) {
+        var idx = + checkboxes[i].value;
+        jobIdString = jobIdString + idx + ",";
+      }
+      jobIdString = jobIdString.substring(0, jobIdString.length - 1);
+      if( !(jobIdString.length > 0)) {
+        // Consider diplaying an alert box to the user here - or ensure this can't happen!
+        return false;
+      }
+
+      console.log("Msg 4: Calling back-end delete routine ... ");
+
+      // const headers = {
+      //   'Content-Type': 'application/json',
+      //   'Access-Control-Allow-Origin': 'true'
+      // }
+
+      // Post the form - how to get this url from env?
+      const res = await axios.post('//localhost:8080/api/deletejobroles', jobIdString
+        //, { headers : headers }
+      );
+
+      // axios.post(Helper.getUserAPI(), data, {
+      //   headers: headers
+      // })
+      //   .then((response) => {
+      //     dispatch({
+      //       type: FOUND_USER,
+      //       data: response.data[0]
+      //     })
+      //   })
+      //   .catch((error) => {
+      //     dispatch({
+      //       type: ERROR_FINDING_USER
+      //     })
+      //   })
+
+
+      console.log("Msg 5: Returned from back-end delete routine");
+
+      // refresh the jobsList screen
+      //window.location.reload(true);
+      
+      // log result on console
+      console.log(res.data);
+
+      console.log("Msg 6: Leaving deleteRoles() method");
+    }
+
+</script>
+
+
 <div class="container">
 
   <h2>View Jobs</h2>
+
+  <input type="button" class="govuk-button"  id="delButton" value="Delete" onclick="doDeleteJobRoles()"/>
 
   {% if newrolesuccess %} 
   <strong class="govuk-tag">
@@ -19,6 +108,7 @@
 <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Select</th>
       <th scope="col" class="govuk-table__header">Job Role Name</th>
       <th scope="col" class="govuk-table__header">Job Capability</th>
       <th scope="col" class="govuk-table__header">Job Band Name</th>
@@ -32,6 +122,7 @@
 
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
+      <td class="govuk-table__header govuk-!-width-one-third"><input type="checkbox" id="delCheckBox" class="delChkClass" value="{{role.jobid}}" /> </td>
       <td class="govuk-table__header govuk-!-width-one-third"><a href="{{role.specification}}">{{role.jobName}}</a></td>
       <td class="govuk-table__header govuk-!-width-one-third">{{role.capabilityName}}</td>
       <td class="govuk-table__header"><a href="viewcompetencies/{{role.bandLevelID}}">{{role.bandLevelName}}</a></td>
@@ -42,10 +133,10 @@
         {% for r in res %}
         <p>{{r}}</p>
         {% set resrows = (resrows.push([{ text: r }]), resrows) %} 
-        {% endfor %} 
-        
+        {% endfor %}   
+
       </td>
-      
+
     </tr>
     {% endfor %} 
 
