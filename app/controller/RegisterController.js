@@ -29,4 +29,27 @@ router.post('/register', async (req, res)=>{
     }
 });
 
+router.get('/login', function(req, res){ 
+    res.render('login'); 
+});
+
+router.post('/login', async (req, res)=>{ 
+    let user = req.body
+    let encryptedPassword = await sha512.hmac(secret, user.password);
+    console.log(encryptedPassword)
+    let response = await userData.loginUser(user.email, encryptedPassword)
+    try {
+        if(response.data.token!==undefined) {
+                res.cookie('auth', response.data.token, {secure:true})
+                res.render('login', {success: 'true'})
+            } else {
+                res.render('login', {success: 'false'})
+            }  
+        } catch (e) {
+            res.render('login', {success: 'false'})
+            console.log(e)
+        }
+});
+
+
 module.exports = router
