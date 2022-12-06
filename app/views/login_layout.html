@@ -82,18 +82,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item">
-          <a class="nav-link mx-2" href="/login" onclick="eraseCookie('auth')"><i class="fas fa-plus-circle pe-2"></i>Log out</a>
-        </li>
+            <a class="nav-link mx-2" href="/register"><i class="fas fa-plus-circle pe-2"></i>Register</a>
+          </li>
       </ul>
     </div>
   </div>
 </nav>
-
-<script>
-  function eraseCookie(name) {
-    document.cookie = name + '=; Max-Age=0'
-}
-</script>
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}

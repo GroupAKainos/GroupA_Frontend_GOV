@@ -1,4 +1,4 @@
-{% extends "kainos_layout.html" %} 
+{% extends "register_layout.html" %} 
 {% block pageTitle %} 
   Register 
 {% endblock %} 
@@ -35,7 +35,7 @@ div.hidden
     <div class="govuk-grid-column-two-thirds">
 
       {% if success == 'true' %} 
-        <p class="govuk-error-message" style="color: green;">User registered successfully!</p>
+        <meta http-equiv="refresh" content="0; url=/login" />
       {% endif %}
       {% if success == 'false' %} 
         <p class="govuk-error-message" style="color: red;">Failed to register user!</p>
@@ -68,8 +68,7 @@ div.hidden
         <option value="Admin">Admin</option>
     </select>
     <p></p><p></p>
-        <button class="govuk-button" type="Submit">Register</button>
-    
+        <button class="govuk-button" type="Submit">Register</button>    
     </form>
     
     </div>
