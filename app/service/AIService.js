@@ -2,12 +2,13 @@ const axios = require('axios');
 const url = process.env.AIURL
 
 exports.checkformality = async (req) => {
+    console.log(req)
     try {
         const results = await axios.post(url,req)
+        console.log(results.data)
         return results.data
 
     } catch (e) {
-        console.log(e)
         return new Error('Failed to get formality scores')
     }
 }

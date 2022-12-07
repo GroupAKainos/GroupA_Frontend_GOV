@@ -17,10 +17,12 @@ Adding new job role
 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {{ govukTextarea({
   name: "jobResponsibility",
+  rows: "10",
   id: "jobResponsibility",
   value:data["jobResponsibility"],
+  attributes:"required",
   label: {
-    text: "Check Score"
+    text: ""
   }
 }) }}
 

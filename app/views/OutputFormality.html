@@ -1,27 +1,31 @@
 {% extends "kainos_layout.html" %} 
 {% block pageTitle %} 
-  List of Competencies 
+  Formality Scores 
 {% endblock %} 
  
 {% block content %}
 
-<h1>List of Competencies For Band {{band}}</h1>
-
+<h1>Formality Score</h1>
+{{ govukBackLink({
+  text: "Back",
+  href: "/formality"
+}) }}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
 
-
+{% if datareturned and datareturned.length > 0 %} 
 {% set Scores = [] %} 
 {% for data in datareturned %}
 {% set Scores = (Scores.push([{text: data.sentences}, {text: data.scores}, {text: data.formality}]), Scores) %} 
 {% endfor %} 
 
-<h2>Formality Score</h2>
 {{govukTable({ 
   firstCellIsHeader: true,
     head: [ { text: "Sentences", classes: "govuk-!-width-one-half"},{ text: "Score", classes: "govuk-!-width-one-third" }, {text: "Formality", classes: "govuk-!-width-one-third"}],  
     rows: Scores  }) 
 }} 
-
+{% else %}
+Unable to retrieve score please try again 
+{% endif %}
 
 {% endblock %}
