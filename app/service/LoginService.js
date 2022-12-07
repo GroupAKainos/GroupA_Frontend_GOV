@@ -7,7 +7,7 @@ exports.loginUser = async (email, password) => {
         return response
     } catch (e) {
         if((e+'').includes('Request failed with status code 500'))
-            return new Error('Could not register user')
+            return new Error('Could not login user')
         if((e+'').includes('Request failed with status code 400'))
             return new Error('Invalid data')
         return new Error('Error')

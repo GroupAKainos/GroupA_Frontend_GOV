@@ -1,5 +1,4 @@
 const express = require('express')
-const router = express.Router()
 const jwt_decode = require('jwt-decode');
 const decrypt = require('../service/AuthorisationService')
 
@@ -12,7 +11,7 @@ module.exports.Employee = async (req, res, next) => {
         }
         let decrypted = await decrypt.Decrypt(token)
         let decoded = await jwt_decode(decrypted);
-        if (!decoded.role == 'Admin' && !decoded.role == 'Employee') {
+        if (!decoded.role === 'Admin' && !decoded.role === 'Employee') {
             req.session.redirect_to = req.path
             return res.redirect('/login');
         }
@@ -31,7 +30,7 @@ module.exports.Admin = async (req, res, next) => {
         }
         let decrypted = await decrypt.Decrypt(token)
         let decoded = await jwt_decode(decrypted);
-        if (decoded.role != 'Admin') {
+        if (decoded.role !== 'Admin') {
             req.session.redirect_to = req.path
             return res.redirect('/viewroles');
         }
@@ -41,17 +40,14 @@ module.exports.Admin = async (req, res, next) => {
     }
 };
 
-exports.ReturnRole = async (req, res, next) => {
+exports.ReturnRole = async (req) => {
     const token = req.cookies.auth
     if (!token) {
         req.session.redirect_to = req.path
         return false;
     }
-    let decrypted = await decrypt.Decrypt(token)
-    let decoded = await jwt_decode(decrypted);
-    if (decoded.role == 'Admin') {
-        return true;
-    }
-    return false
+    const decrypted = await decrypt.Decrypt(token)
+    const decoded = await jwt_decode(decrypted);
+    return decoded.role == 'Admin';
 };
 

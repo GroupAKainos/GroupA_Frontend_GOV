@@ -15,10 +15,10 @@ router.post('/login', async (req, res) => {
     let response = await userData.loginUser(user.email, encryptedPassword)
     try {
         if (response.data.token !== undefined) {
-            var redirectTo = req.session.redirect_to || '/login'
+            let redirectTo = req.session.redirect_to || '/login'
             delete req.session.redirectTo;
             res.cookie('auth', response.data.token, { secure: true })
-            if (redirectTo == '/login') {
+            if (redirectTo === '/login') {
                 return res.redirect('/viewroles')
             } else {
                 res.redirect(redirectTo);
