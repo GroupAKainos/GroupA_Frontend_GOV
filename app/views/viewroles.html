@@ -1,40 +1,42 @@
-{% extends "kainos_layout.html" %} 
-{% block pageTitle %} 
-  List of Roles 
-{% endblock %} 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+{% extends "kainos_layout.html" %}
+{% block pageTitle %}
+List of Roles
+{% endblock %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 {% block content %}
 
+{% if role == true %}
 <style type="text/css">
-
   #spinner {
-      display: none;
+    display: none;
   }
 
   .loading {
-      border: 2px solid #ccc;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border-top-color: #1ecd97;
-      border-left-color: #1ecd97;
-      animation: spin 1s infinite ease-in;
+    border: 2px solid #ccc;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border-top-color: #1ecd97;
+    border-left-color: #1ecd97;
+    animation: spin 1s infinite ease-in;
   }
 
   @keyframes spin {
-      0% {
-          transform: rotate(0deg);
-      }
-      100% {
-          transform: rotate(360deg);
-      }
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>
 
 <script type="text/javascript">
   function spinner() {
-      document.getElementById("spinner").style.display = "block";
+    document.getElementById("spinner").style.display = "block";
   }
 </script>
 
@@ -42,54 +44,56 @@
 
 <script>
 
-    function doControlDeleteBtnEnabled() {
-      var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
-      var delBtn = document.getElementById("delButton");
-      if(checkboxes.length > 0) {
-        delBtn.removeAttribute("disabled");
-      } else {
-        delBtn.setAttribute("disabled", true);
-      }
+  const url = process.env.URL
+  function doControlDeleteBtnEnabled() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+    var delBtn = document.getElementById("delButton");
+    if (checkboxes.length > 0) {
+      delBtn.removeAttribute("disabled");
+    } else {
+      delBtn.setAttribute("disabled", true);
     }
+  }
 
-    function doDeleteJobRoles() {
+  function doDeleteJobRoles() {
 
-     if(confirm("Are you sure want to delete your selected roles?  Hint: May take a few seconds")){
-        spinner();
+    if (confirm("Are you sure want to delete your selected roles?  Hint: May take a few seconds")) {
+      spinner();
 
-        deleteRoles()
-       .then( () => { 
-        console.log("The deleteRoles() method returned successfully"); }
-      )
-      .catch(err => {
-        console.log("The deleteRoles() method returned an error");
-        console.log(err)
-      });
+      deleteRoles()
+        .then(() => {
+          console.log("The deleteRoles() method returned successfully");
+        }
+        )
+        .catch(err => {
+          console.log("The deleteRoles() method returned an error");
+          console.log(err)
+        });
 
       return true;
-     } else return false;
-      
+    } else return false;
+
+  }
+
+  async function deleteRoles() {
+
+    // Collect all checked checkboxes
+    var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+
+    // Establish jobIdString content for the request
+    var jobIdString = "";
+    for (var i = 0; i < checkboxes.length; i++) {
+      var idx = + checkboxes[i].value;
+      jobIdString = jobIdString + idx + ",";
+    }
+    jobIdString = jobIdString.substring(0, jobIdString.length - 1);
+    if (!(jobIdString.length > 0)) {
+      // Consider diplaying an alert box to the user here - or ensure this can't happen!
+      return false;
     }
 
-    async function deleteRoles() {
-      
-      // Collect all checked checkboxes
-      var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
-
-      // Establish jobIdString content for the request
-      var jobIdString = "";
-      for (var i = 0; i < checkboxes.length; i++) {
-        var idx = + checkboxes[i].value;
-        jobIdString = jobIdString + idx + ",";
-      }
-      jobIdString = jobIdString.substring(0, jobIdString.length - 1);
-      if( !(jobIdString.length > 0)) {
-        // Consider diplaying an alert box to the user here - or ensure this can't happen!
-        return false;
-      }
-
-      // Post the form - how to get this url from env?
-      const res = await axios.post('//localhost:8080/api/deletejobroles', jobIdString)
+    // Post the form - how to get this url from env?
+    const res = await axios.post("{{url}}" + '/deletejobroles', jobIdString)
       .then((response) => {
         console.log("POST request to /api/deletejobroles succeeded");
       })
@@ -97,86 +101,129 @@
         console.log("POST request to /api/deletejobroles FAILED!!");
       })
 
-      // refresh the jobsList screen
-      window.location.reload(true);
-    }
+    // refresh the jobsList screen
+    window.location.reload(true);
+  }
 
 </script>
+
+{% endif %}
 
 
 <div class="container">
 
-  <h2>View Jobs</h2> 
-  <form class="form" action="/addnewjob" method="GET">
-  <button type="submit" class="govuk-button" data-module="govuk-button">
-  Add new role  
- </button>
-</form>
+  <h2>View Jobs</h2>
 
-<table>
-  <form class="form" action="/addnewjob" method="GET">
-    <button type="submit" class="govuk-button" button style="margin:2px" data-module="govuk-button">
-    Add new role  
-   </button>
-  </form>
+  {% if role == true %}
+  <table>
+    <form class="form" action="/addnewjob" method="GET">
+      <button type="submit" class="govuk-button" button style="margin:2px" data-module="govuk-button">
+        Add new role
+      </button>
+    </form>
 
-  <input type="button" class="govuk-button"  id="delButton" disabled="true" value="Delete Role"  button style="margin:2px" onclick="doDeleteJobRoles()"/>
-  <div id="spinner" class="loading">
-  </div>
-</table>
+    <input type="button" class="govuk-button" id="delButton" disabled="true" value="Delete Role" button
+      style="margin:2px" onclick="doDeleteJobRoles()" />
+    <div id="spinner" class="loading">
+    </div>
+  </table>
+  </br>
+  {% endif %}
 
-<br>
-<br>
-
-
-  {% if newrolesuccess %} 
+  {% if newrolesuccess %}
   <strong class="govuk-tag">
     {{newrolesuccess}}
   </strong>
-{% endif %} 
+  {% endif %}
 
-<table class="govuk-table">
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Select</th>
-      <th scope="col" class="govuk-table__header">Job Role Name</th>
-      <th scope="col" class="govuk-table__header">Job Capability</th>
-      <th scope="col" class="govuk-table__header">Job Band Name</th>
-      <th scope="col" class="govuk-table__header">Job Specification Summary</th>
-      <th scope="col" class="govuk-table__header">Job Responsibility</th>
-      <th scope="col" class="govuk-table__header">Update</th>
-    </tr>
-  </thead>
+  {% if role == true %}
+  <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Select</th>
+        <th scope="col" class="govuk-table__header">Job Role Name</th>
+        <th scope="col" class="govuk-table__header">Job Capability</th>
+        <th scope="col" class="govuk-table__header">Job Band Name</th>
+        <th scope="col" class="govuk-table__header">Job Specification Summary</th>
+        <th scope="col" class="govuk-table__header">Job Responsibility</th>
+        <th scope="col" class="govuk-table__header">Update</th>
+      </tr>
+    </thead>
+    {% else %}
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Job Role Name</th>
+          <th scope="col" class="govuk-table__header">Job Capability</th>
+          <th scope="col" class="govuk-table__header">Job Band Name</th>
+          <th scope="col" class="govuk-table__header">Job Specification Summary</th>
+          <th scope="col" class="govuk-table__header">Job Responsibility</th>
+        </tr>
+      </thead>
+      {% endif %}
 
-{% if roles and roles.length > 0 %} 
-{% for role in roles %}
+      {% if role == true %}
+      {% if roles and roles.length > 0 %}
+      {% for role in roles %}
 
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td class="govuk-table__header govuk-!-width-one-third"><input type="checkbox" id="delCheckBox" class="delChkClass" onclick="doControlDeleteBtnEnabled()" value="{{role.jobid}}" /> </td>
-      <td class="govuk-table__header govuk-!-width-one-third"><a href="{{role.specification}}">{{role.jobName}}</a></td>
-      <td class="govuk-table__header govuk-!-width-one-third">{{role.capabilityName}}</td>
-      <td class="govuk-table__header"><a href="viewcompetencies/{{role.bandLevelID}}">{{role.bandLevelName}}</a></td>
-      <td class="govuk-table__header govuk-!-width-one-half">{{role.specSummary}}</td>
-      <td class="govuk-table__header govuk-!-width-one-half">
-        {% set res = role.jobResponsibility.split('•') %}
-        {% set resrows = [] %} 
-        {% for r in res %}
-        <p>{{r}}</p>
-        {% set resrows = (resrows.push([{ text: r }]), resrows) %} 
-        {% endfor %}   
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__header govuk-!-width-one-third"><input type="checkbox" id="delCheckBox"
+              class="delChkClass" onclick="doControlDeleteBtnEnabled()" value="{{role.jobid}}" /> </td>
+          <td class="govuk-table__header govuk-!-width-one-third"><a href="{{role.specification}}">{{role.jobName}}</a>
+          </td>
+          <td class="govuk-table__header govuk-!-width-one-third">{{role.capabilityName}}</td>
+          <td class="govuk-table__header"><a href="viewcompetencies/{{role.bandLevelID}}">{{role.bandLevelName}}</a>
+          </td>
+          <td class="govuk-table__header govuk-!-width-one-half">{{role.specSummary}}</td>
+          <td class="govuk-table__header govuk-!-width-one-half">
+            {% set res = role.jobResponsibility.split('•') %}
+            {% set resrows = [] %}
+            {% for r in res %}
+            <p>{{r}}</p>
+            {% set resrows = (resrows.push([{ text: r }]), resrows) %}
+            {% endfor %}
+          </td>
+          <th scope="row" class="govuk-table__header"><a href="/editrole/{{role.jobid}}">edit</a></th>
+        </tr>
 
-      </td>
-      <th scope="row" class="govuk-table__header"><a href="/editrole/{{role.jobid}}" >edit</a></th>
-    </tr>
-    {% endfor %} 
+        {% endfor %}
 
-    {% else %} 
-    There are no job roles. 
-    {% endif %}
+        {% else %}
+        There are no job roles.
+        {% endif %}
       </tbody>
     </table>
+    {% else %}
 
-  </div>
+    {% if roles and roles.length > 0 %}
+    {% for role in roles %}
 
-    {% endblock %} 
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header govuk-!-width-one-third"><a href="{{role.specification}}">{{role.jobName}}</a>
+        </td>
+        <td class="govuk-table__header govuk-!-width-one-third">{{role.capabilityName}}</td>
+        <td class="govuk-table__header"><a href="viewcompetencies/{{role.bandLevelID}}">{{role.bandLevelName}}</a></td>
+        <td class="govuk-table__header govuk-!-width-one-half">{{role.specSummary}}</td>
+        <td class="govuk-table__header govuk-!-width-one-half">
+          {% set res = role.jobResponsibility.split('•') %}
+          {% set resrows = [] %}
+          {% for r in res %}
+          <p>{{r}}</p>
+          {% set resrows = (resrows.push([{ text: r }]), resrows) %}
+          {% endfor %}
+        </td>
+      </tr>
+
+      {% endfor %}
+
+      {% else %}
+      There are no job roles.
+      {% endif %}
+    </tbody>
+  </table>
+  {% endif %}
+</div>
+
+{% endblock %}
