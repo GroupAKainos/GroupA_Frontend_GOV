@@ -44,7 +44,7 @@ describe('LoginService', function () {
 
             let error = await LoginService.loginUser(user.email, user.password, user.role)
         
-            expect(error.message).to.equal('Could not register user')
+            expect(error.message).to.equal('Could not login user')
         })
         it('should return error 400', async () => {
             let mock = new MockAdapter(axios);
