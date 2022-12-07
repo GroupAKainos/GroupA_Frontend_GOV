@@ -21,6 +21,21 @@ exports.viewcompetency = async (bandID) => {
     }
 }
 
+exports.viewjob = async (id) => {
+    try {
+        const results = await axios.get(url+'/viewupdatejob/'+ id)
+        return results.data
+    } catch (e) {
+        return new Error('Failed to get job roles')
+    }
+}
+
+exports.updateRole = async function (updRole) {
+    const response = await axios.post('http://localhost:8080/api/editrole/', updRole)
+    return response.data
+}
+
+
 exports.populatefamilylist = async () => {
     try {
         const results = await axios.get(url+'/populatefamilylist')

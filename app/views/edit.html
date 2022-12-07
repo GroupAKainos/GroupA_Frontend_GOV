@@ -1,0 +1,64 @@
+{% extends "kainos_layout.html" %} 
+{% block pageTitle %} 
+  List of Roles 
+{% endblock %} 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+{% block content %}
+
+{% if roles %}
+<form class="form" action="/editrole" method="post">
+  <div class="govuk-form-group">
+    <textarea hidden="hidden" id="jobid" name="jobid" value="{{jobid}}" type="text">{{roles.jobid}}</textarea>
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--l" for="jobName">Role Name</label>
+    </h1>
+    <textarea class="govuk-input" id="jobName" name="jobName" value="{{jobName}}" type="text" required>{{roles.jobName}}</textarea>
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--l" for="specSummary">Spec Summary</label>
+    </h1>
+    <textarea class="govuk-textarea" rows=8 id="specSummary" name="specSummary" value="{{specSummary}}" type="text" required>{{roles.specSummary}}</textarea>
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--l" for="jobResponsibility">Job Responsibility</label>
+    </h1>
+    <textarea class="govuk-textarea" rows=8 id="jobResponsibility" name="jobResponsibility"value="{{jobResponsibility}}" type="text" required>{{roles.jobResponsibility}}</textarea>
+    <label class="govuk-label" for="sort">
+      Capability
+    </label>
+    {% if capability and capability.length > 0 %} 
+    <select style="width: 350px" class="govuk-select" id="capabilityId" name="capabilityId" required>
+    
+        {% for cap in capability %}
+        {% if cap.listID == roles.capabilityID %}
+        <option selected value={{roles.capabilityID}}>{{cap.listName}}</option>
+        {% else %}
+        <option value="{{cap.listID}}">{{cap.listName}}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+    {% else %}
+No job capabilities 
+{% endif %}
+  <label class="govuk-label" for="bandLevelId">
+    Job Band
+  </label>
+  {% if bandlevel and bandlevel.length > 0 %} 
+  <select style="width: 350px" class="govuk-select" id="bandLevelId" name="bandLevelId" required>
+    {% for band in bandlevel %}
+    {% if band.listID == roles.bandLevelID %}
+    <option selected value={{roles.bandLevelID}}>{{band.listName}}</option>
+    {% else %}
+    <option value="{{band.listID}}">{{band.listName}}</option>
+    {% endif %}
+    {% endfor %}
+</select>
+{% else %}
+No job bands
+{% endif %}
+</div>
+  <button class="govuk-button" id="submit">Submit</button>
+</form>
+{% else %}
+Employee does not exist
+{% endif %}
+{% endblock %}
