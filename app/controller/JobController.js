@@ -82,6 +82,7 @@ router.post('/editrole', async (req, res) => {
     console.log(error);
     try {        
         const id = await job.updateRole(req.body)
+        this.delete.req.body;
         var s = await job.viewjobroles()
         res.redirect('/viewroles', {roles: s})
     } catch (e) {
