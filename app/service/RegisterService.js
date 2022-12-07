@@ -1,7 +1,5 @@
 const axios = require('axios');
 const url = process.env.URL
-const CryptoJS = require('crypto-js');
-const secretJ = process.env.ENCODED_SECRET_KEY
 
 exports.registerUser = async (email, password, role, firstName, lastName) => {
     try {

@@ -44,6 +44,7 @@ List of Roles
 
 <script>
 
+ const url = process.env.URL
   function doControlDeleteBtnEnabled() {
     var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
     var delBtn = document.getElementById("delButton");
@@ -92,7 +93,7 @@ List of Roles
     }
 
     // Post the form - how to get this url from env?
-    const res = await axios.post('//localhost:8080/api/deletejobroles', jobIdString)
+    const res = await axios.post("{{url}}"+'/deletejobroles', jobIdString)
       .then((response) => {
         console.log("POST request to /api/deletejobroles succeeded");
       })

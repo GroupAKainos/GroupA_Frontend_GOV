@@ -4,13 +4,13 @@ var cookieParser = require('cookie-parser')
 router.use(cookieParser());
 const isAuth = require('../middleware/Authorisation')
 const job = require('../service/JobService')
+const url = process.env.URL
 // Add your routes here - above the module.exports line
 
 router.get('/viewroles', isAuth.Employee, async (req, res) => {
     let s = await job.viewjobroles();
     let data = await isAuth.ReturnRole(req)
-    
-    res.render('viewroles', { roles: s, role: data })
+    res.render('viewroles', { roles: s, role: data, url: url })
 })
 
 router.get('/viewcompetencies/:BandID', isAuth.Employee, async (req, res) => {
