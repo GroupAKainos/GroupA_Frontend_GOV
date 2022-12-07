@@ -101,4 +101,26 @@ router.post('/formality', async (req, res) => {
     }
 })
 
+router.get('/editrole/:id', async (req, res) => {   
+    let capability = await job.poulatecapabiltynamelist()
+    let bandlevel = await job.poulatebandlevellist()
+
+    res.render('edit', { roles: await job.viewjob(req.params.id), capability:capability, bandlevel: bandlevel} ) 
+});
+
+router.post('/editrole', async (req, res) => {
+    let error = validator.validateUpdate(req.body)
+
+    console.log(error);
+    try {        
+        const id = await job.updateRole(req.body)
+        this.delete.req.body;
+        var s = await job.viewjobroles()
+        res.redirect('/viewroles', {roles: s})
+    } catch (e) {
+        res.locals.errormessage = "Failed to submit form"
+        res.redirect('/viewroles')
+    }
+});
+
 module.exports = router

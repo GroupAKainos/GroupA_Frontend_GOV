@@ -1,7 +1,9 @@
 const express = require('express')
-const bcrypt = require("bcrypt")
+const secret = process.env.PASS_SECRET_KEY
+const sha512 = require('js-sha512');
 const router = express.Router()
-const userData = require('../service/UserService')
+
+const userData = require('../service/RegisterService')
 
 
 router.get('/register', function(req, res){ 
@@ -10,7 +12,7 @@ router.get('/register', function(req, res){
 
 router.post('/register', async (req, res)=>{ 
     let user = req.body
-    let encryptedPassword = await bcrypt.hash(user.password, 10)
+    let encryptedPassword = await sha512.hmac(secret, user.password);
     let response = await userData.registerUser(user.email, encryptedPassword, user.role, user.firstName, user.lastName)
     try {
         if(!response.data.token!=null) {

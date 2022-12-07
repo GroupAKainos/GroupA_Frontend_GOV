@@ -6,6 +6,104 @@
 
 {% block content %}
 
+<style type="text/css">
+
+  #spinner {
+      display: none;
+  }
+
+  .loading {
+      border: 2px solid #ccc;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border-top-color: #1ecd97;
+      border-left-color: #1ecd97;
+      animation: spin 1s infinite ease-in;
+  }
+
+  @keyframes spin {
+      0% {
+          transform: rotate(0deg);
+      }
+      100% {
+          transform: rotate(360deg);
+      }
+  }
+</style>
+
+<script type="text/javascript">
+  function spinner() {
+      document.getElementById("spinner").style.display = "block";
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+
+    function doControlDeleteBtnEnabled() {
+      var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+      var delBtn = document.getElementById("delButton");
+      if(checkboxes.length > 0) {
+        delBtn.removeAttribute("disabled");
+      } else {
+        delBtn.setAttribute("disabled", true);
+      }
+    }
+
+    function doDeleteJobRoles() {
+
+     if(confirm("Are you sure want to delete your selected roles?  Hint: May take a few seconds")){
+        spinner();
+
+        deleteRoles()
+       .then( () => { 
+        console.log("The deleteRoles() method returned successfully"); }
+      )
+      .catch(err => {
+        console.log("The deleteRoles() method returned an error");
+        console.log(err)
+      });
+
+      return true;
+     } else return false;
+      
+    }
+
+    async function deleteRoles() {
+      
+      // Collect all checked checkboxes
+      var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+
+      // Establish jobIdString content for the request
+      var jobIdString = "";
+      for (var i = 0; i < checkboxes.length; i++) {
+        var idx = + checkboxes[i].value;
+        jobIdString = jobIdString + idx + ",";
+      }
+      jobIdString = jobIdString.substring(0, jobIdString.length - 1);
+      if( !(jobIdString.length > 0)) {
+        // Consider diplaying an alert box to the user here - or ensure this can't happen!
+        return false;
+      }
+
+      // Post the form - how to get this url from env?
+      const res = await axios.post('//localhost:8080/api/deletejobroles', jobIdString)
+      .then((response) => {
+        console.log("POST request to /api/deletejobroles succeeded");
+      })
+      .catch((error) => {
+        console.log("POST request to /api/deletejobroles FAILED!!");
+      })
+
+      // refresh the jobsList screen
+      window.location.reload(true);
+    }
+
+</script>
+
+
 <div class="container">
 
   <h2>View Jobs</h2> 
@@ -14,6 +112,22 @@
   Add new role  
  </button>
 </form>
+
+<table>
+  <form class="form" action="/addnewjob" method="GET">
+    <button type="submit" class="govuk-button" button style="margin:2px" data-module="govuk-button">
+    Add new role  
+   </button>
+  </form>
+
+  <input type="button" class="govuk-button"  id="delButton" disabled="true" value="Delete Role"  button style="margin:2px" onclick="doDeleteJobRoles()"/>
+  <div id="spinner" class="loading">
+  </div>
+</table>
+
+<br>
+<br>
+
 
   {% if newrolesuccess %} 
   <strong class="govuk-tag">
@@ -24,11 +138,13 @@
 <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Select</th>
       <th scope="col" class="govuk-table__header">Job Role Name</th>
       <th scope="col" class="govuk-table__header">Job Capability</th>
       <th scope="col" class="govuk-table__header">Job Band Name</th>
       <th scope="col" class="govuk-table__header">Job Specification Summary</th>
       <th scope="col" class="govuk-table__header">Job Responsibility</th>
+      <th scope="col" class="govuk-table__header">Update</th>
     </tr>
   </thead>
 
@@ -37,6 +153,7 @@
 
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
+      <td class="govuk-table__header govuk-!-width-one-third"><input type="checkbox" id="delCheckBox" class="delChkClass" onclick="doControlDeleteBtnEnabled()" value="{{role.jobid}}" /> </td>
       <td class="govuk-table__header govuk-!-width-one-third"><a href="{{role.specification}}">{{role.jobName}}</a></td>
       <td class="govuk-table__header govuk-!-width-one-third">{{role.capabilityName}}</td>
       <td class="govuk-table__header"><a href="viewcompetencies/{{role.bandLevelID}}">{{role.bandLevelName}}</a></td>
@@ -47,10 +164,10 @@
         {% for r in res %}
         <p>{{r}}</p>
         {% set resrows = (resrows.push([{ text: r }]), resrows) %} 
-        {% endfor %} 
-        
+        {% endfor %}   
+
       </td>
-      
+      <th scope="row" class="govuk-table__header"><a href="/editrole/{{role.jobid}}" >edit</a></th>
     </tr>
     {% endfor %} 
 

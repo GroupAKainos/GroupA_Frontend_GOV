@@ -50,7 +50,10 @@
     "require-dir": "^1.0.0",
     "sync-request": "^6.0.0",
     "universal-analytics": "^0.4.16",
-    "uuid": "^7.0.3"
+    "uuid": "^7.0.3",
+    "bcrypt": "^3.0.6",
+    "crypto-js": "^4.1.1",
+    "js-sha512": "^0.8.0"
   },
   "devDependencies": {
     "glob": "^7.1.4",
