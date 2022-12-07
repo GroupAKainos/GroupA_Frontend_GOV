@@ -1,4 +1,4 @@
-{% extends "kainos_layout.html" %} 
+{% extends "login_layout.html" %} 
 {% block pageTitle %} 
   Login 
 {% endblock %} 
@@ -30,9 +30,7 @@
         <label for="password"></label><input class="govuk-input" type=password name="password" id="password" value="{{password}}" required><p></p>
     
     <p></p><p></p>
-        <button class="govuk-button" type="Submit">Login</button>
-        <button class="govuk-button" style="margin-left: 395px;" onclick="window.location.href='/register';">Go to Register></button>
-    
+        <button class="govuk-button" type="Submit">Login</button>    
     </form>
     
     </div>
@@ -40,3 +38,4 @@
     </div>
 
     {% endblock %}
+    
