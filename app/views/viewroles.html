@@ -127,6 +127,7 @@ List of Roles
     <div id="spinner" class="loading">
     </div>
   </table>
+</br>
   {% endif %}
 
   {% if newrolesuccess %}
@@ -183,6 +184,7 @@ List of Roles
             {% set resrows = (resrows.push([{ text: r }]), resrows) %}
             {% endfor %}
           </td>
+          <th scope="row" class="govuk-table__header"><a href="/editrole/{{role.jobid}}" >edit</a></th>
         </tr>
 
         {% endfor %}

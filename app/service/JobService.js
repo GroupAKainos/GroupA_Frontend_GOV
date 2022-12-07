@@ -74,7 +74,7 @@ exports.addnewrole = async (req, res) => {
             "jobFamilyId": req.jobFamilyId,
             "capabilityId": req.capabilityId
         })
-
+        delete {req}
         return results.data
 
     } catch (e) {

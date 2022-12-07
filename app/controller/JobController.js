@@ -5,8 +5,6 @@ router.use(cookieParser());
 const isAuth = require('../middleware/Authorisation')
 const job = require('../service/JobService')
 const url = process.env.URL
-// Add your routes here - above the module.exports line
-const job = require('../service/JobService');
 const validator = require('../validator/update.js');
 
 router.get('/viewroles', isAuth.Employee, async (req, res) => {
@@ -26,6 +24,7 @@ router.get('/addnewjob', isAuth.Admin, async (req, res) => {
     let family = await job.populatefamilylist()
     let capability = await job.poulatecapabiltynamelist()
     let bandlevel = await job.poulatebandlevellist()
+    delete req.body
 
     res.render('addnewjob', { family: family, capability: capability, bandlevel: bandlevel })
 })
@@ -56,13 +55,16 @@ router.post('/addnewjob', isAuth.Admin, async (req, res) => {
         res.render('addnewjob', { req: req.body, family: family, capability: capability, bandlevel: bandlevel })
     } else {
         let addrole = await job.addnewrole(req.body)
-
+        delete req.body
         // If the value returned from the job service is not equal to an error render the view roles page with added role and message to user
         // Else populate lists return the data entered and render the addnewroles page with message to let the user know
         if (!(addrole instanceof Error)) {
             let message = "New role has been added"
             let s = await job.viewjobroles()
-            res.render('viewroles', { roles: s, newrolesuccess: message })
+            let data = await isAuth.ReturnRole(req)
+            
+            
+            res.render('viewroles', { roles: s, role: data, url: url, newrolesuccess: message })
         } else {
             let family = await job.populatefamilylist()
             let capability = await job.poulatecapabiltynamelist()
@@ -74,14 +76,14 @@ router.post('/addnewjob', isAuth.Admin, async (req, res) => {
     }
 })
 
-router.get('/editrole/:id', async (req, res) => {   
+router.get('/editrole/:id', isAuth.Admin, async (req, res) => {   
     let capability = await job.poulatecapabiltynamelist()
     let bandlevel = await job.poulatebandlevellist()
 
     res.render('edit', { roles: await job.viewjob(req.params.id), capability:capability, bandlevel: bandlevel} ) 
 });
 
-router.post('/editrole', async (req, res) => {
+router.post('/editrole', isAuth.Admin, async (req, res) => {
     let error = validator.validateUpdate(req.body)
 
     console.log(error);

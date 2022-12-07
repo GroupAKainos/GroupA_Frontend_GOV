@@ -33,7 +33,7 @@ module.exports.Admin = async (req, res, next) => {
         let decoded = await jwt_decode(decrypted);
         if (decoded.role != 'Admin') {
             req.session.redirect_to = req.path
-            return res.redirect('/login');
+            return res.redirect('/viewroles');
         }
         next();
     } catch (error) {
