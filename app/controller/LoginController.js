@@ -28,7 +28,6 @@ router.post('/login', async (req, res) => {
         }
     } catch (e) {
         res.render('login', { success: 'false' })
-        console.log(e)
     }
 });
 
