@@ -27,7 +27,7 @@ jobs:
     - name: Build & push the Docker image
       env:
         URL: ${{ secrets.URL }}
-        AI: ${{ secrets.AIURL }}
+        AIURL: ${{ secrets.AIURL }}
         ENCODED_SECRET_KEY: ${{ secrets.ENCODED_SECRET_KEY }}
         PASS_SECRET_KEY: ${{ secrets.PASS_SECRET_KEY }}
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
