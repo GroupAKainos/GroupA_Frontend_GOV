@@ -31,7 +31,7 @@ exports.viewjob = async (id) => {
 }
 
 exports.updateRole = async function (updRole) {
-    const response = await axios.post('http://localhost:8080/api/editrole/', updRole)
+    const response = await axios.post(url+'/editrole/', updRole)
     return response.data
 }
 
