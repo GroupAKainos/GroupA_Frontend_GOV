@@ -29,6 +29,16 @@ How to start the frontend application
 Tests
 ---
 
-1. Run `npm test` to run tests
+1. Run `npm test` to run service tests
 
+For selenium automated testing do the following:
 
+```
+1. Install https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd?hl=en 
+2. Add extension
+3. Download Group A Selenium Tests from ui-testing folder
+4. Open selenium ide from extensions tab and select open existing project
+5. Select Group A Selenium tests from where you downloaded it too
+6. Ensure front and back end are running
+7. Select run all tests in Selenium IDE
+```
