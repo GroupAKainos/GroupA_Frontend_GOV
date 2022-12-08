@@ -23,6 +23,7 @@ const packageJson = require('./package.json')
 const register = require('./app/controller/RegisterController.js')
 const login = require('./app/controller/LoginController.js')
 const job = require('./app/controller/JobController.js')
+const ai = require('./app/controller/AIController.js')
 const utils = require('./lib/utils.js')
 const extensions = require('./lib/extensions/extensions.js')
 
@@ -181,6 +182,7 @@ if (typeof (register) !== 'function') {
   app.use('/', register)
   app.use('/', login)
   app.use('/', job)
+  app.use('/', ai)
 }
 
 if (useV6) {
