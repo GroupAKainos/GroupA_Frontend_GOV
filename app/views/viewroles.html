@@ -1,4 +1,9 @@
+{% if role == true %}
+{% extends "admin_layout.html" %}
+{% endif %}
+{% if role != true %}
 {% extends "kainos_layout.html" %}
+{% endif %}
 {% block pageTitle %}
 List of Roles
 {% endblock %}
@@ -8,6 +13,7 @@ List of Roles
 {% block content %}
 
 {% if role == true %}
+
 <style type="text/css">
   #spinner {
     display: none;
@@ -168,7 +174,7 @@ List of Roles
 
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <td class="govuk-table__header govuk-!-width-one-third"><input type="checkbox" id="delCheckBox"
+          <td class="govuk-table__header govuk-!-width-one-third"><label for="delCheckBox{{role.jobid}}" style="display:none;">Check</label><input type="checkbox" id="delCheckBox{{role.jobid}}"
               class="delChkClass" onclick="doControlDeleteBtnEnabled()" value="{{role.jobid}}" /> </td>
           <td class="govuk-table__header govuk-!-width-one-third"><a href="{{role.specification}}">{{role.jobName}}</a>
           </td>

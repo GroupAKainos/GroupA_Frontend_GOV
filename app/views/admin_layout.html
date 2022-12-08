@@ -44,13 +44,13 @@
 
 
 {% block header %}
+{# Set serviceName in config.js. #}
 
 <style>
   .navbar-light .navbar-nav .nav-link {
   color: #000;
 };
 </style>
-
 <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light" >
   <div class="container">
     <a class="navbar-brand" href="#"
@@ -75,13 +75,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item">
-            <a class="nav-link mx-2" href="/login"><i class="fas fa-plus-circle pe-2"></i>Login</a>
-          </li>
+          <a class="nav-link mx-2" href="/formality"><i class="fas fa-plus-circle pe-2"></i>Check Formality</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="/login" onclick="eraseCookie('auth')"><i class="fas fa-plus-circle pe-2"></i>Log out</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 <br><br>
+
+<script>
+  function eraseCookie(name) {
+    document.cookie = name + '=; Max-Age=0'
+}
+</script>
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}

@@ -6,13 +6,18 @@ Adding new job role
 
 {% block content %}
 <h2>Check Formality</h2>
-</br>
-
+{{ govukBackLink({
+  text: "Back",
+  href: "/viewroles"
+}) }}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% if errormessage %} 
 <div class="govuk-error-message">{{ errormessage }}</div> 
 {% endif %}
 
 <form class="form" action="/formality" method="POST">
+
+<label for="jobResponsibility" style="display:none;">Check Formality:</label>
 
 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {{ govukTextarea({
@@ -20,10 +25,7 @@ Adding new job role
   rows: "10",
   id: "jobResponsibility",
   value:data["jobResponsibility"],
-  attributes:"required",
-  label: {
-    text: ""
-  }
+  attributes:"required"
 }) }}
 
 <button type="submit" class="govuk-button" data-module="govuk-button">

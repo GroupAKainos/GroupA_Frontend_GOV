@@ -19,15 +19,10 @@
     <h1 class="govuk-heading-xl">Login</h1>
     
     <form class="govuk-form-group" method="post">
-
     
-        <strong>Email:</strong>
+        <label for="email"><strong>Email:</strong></label><input class="govuk-input" type=email name="email" id="email" value="{{email}}" required/> <p></p>    
     
-        <label for="email"></label><input class="govuk-input" type=email name="email" id="email" value="{{email}}" required/> <p></p>
-    
-        <strong>Password:</strong>
-    
-        <label for="password"></label><input class="govuk-input" type=password name="password" id="password" value="{{password}}" required><p></p>
+        <label for="password"><strong>Password:</strong></label><input class="govuk-input" type=password name="password" id="password" value="{{password}}" required><p></p>
     
     <p></p><p></p>
         <button class="govuk-button" type="Submit">Login</button>    
