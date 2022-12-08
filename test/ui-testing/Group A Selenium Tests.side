@@ -1,0 +1,1852 @@
+{
+  "id": "0ab076f1-c2c2-4c56-9fb2-535483863907",
+  "version": "2.0",
+  "name": "Group A Selenium Tests",
+  "url": "http://localhost:3000/login",
+  "tests": [{
+    "id": "b99ba7fb-8fd8-494a-a9ee-1a800668c1b8",
+    "name": "VerifyJobNameColumn",
+    "commands": [{
+      "id": "e1fcc17f-fd98-4f2d-aa8a-171bdc796a45",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c57d8495-58ea-4ab2-b426-2db699f2ffb7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1283x849",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7c0953c9-8f05-466f-a25d-888c1a933b59",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "33d55a7d-4f8a-4f33-b2d9-0299244ce432",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "padraig@test.com"
+    }, {
+      "id": "26103bfb-0ac9-4dab-ae98-4783c4018669",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e438e168-3893-4a35-b0c4-cca3247e609e",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "T@sting123"
+    }, {
+      "id": "d6ae385c-aaec-4aa4-b267-63357de23195",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-button:nth-child(11)",
+      "targets": [
+        ["css=.govuk-button:nth-child(11)", "css:finder"],
+        ["xpath=//button[@type='Submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fca78678-96a8-49e9-8a74-bd1361608ece",
+      "comment": "Verify that job name data is returned",
+      "command": "verifyText",
+      "target": "linkText=Trainee Software Engineer",
+      "targets": [
+        ["linkText=Trainee Software Engineer", "linkText"],
+        ["css=.govuk-table__body:nth-child(2) .govuk-\\!-width-one-third > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Trainee Software Engineer')]", "xpath:link"],
+        ["xpath=//main[@id='main-content']/div/table/tbody/tr/td/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://kainossoftwareltd.sharepoint.com/people/Job%20Specifications/Forms/AllItems.aspx?id=%2Fpeople%2FJob%20Specifications%2FEngineering%2FJob%20profile%20%2D%20Software%20Engineer%20%28Trainee%29%2Epdf&parent=%2Fpeople%2FJob%20Specifications%2FEngineering&p=true&ga=1')]", "xpath:href"],
+        ["xpath=//td/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Trainee Software Engineer')]", "xpath:innerText"]
+      ],
+      "value": "Trainee Software Engineer"
+    }, {
+      "id": "23c93222-e083-4527-a270-0890c99ed6e7",
+      "comment": "Verify table column is for job role names",
+      "command": "verifyText",
+      "target": "css=.govuk-table__head .govuk-table__header:nth-child(1)",
+      "targets": [
+        ["css=.govuk-table__head .govuk-table__header:nth-child(2)", "css:finder"],
+        ["xpath=//main[@id='main-content']/div/table[2]/thead/tr/th[2]", "xpath:idRelative"],
+        ["xpath=//th[2]", "xpath:position"],
+        ["xpath=//th[contains(.,'Job Role Name')]", "xpath:innerText"]
+      ],
+      "value": "Job Role Name"
+    }, {
+      "id": "f2f7942d-5425-4b29-8f68-32162fafca26",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log out",
+      "targets": [
+        ["linkText=Log out", "linkText"],
+        ["css=.nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"eraseCookie('auth')\"]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "22fc4174-cf59-4a8e-82a7-06d3347f97fe",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "600494e8-4a84-4582-9701-bc16d800050d",
+    "name": "VerifyJobCapabilityColumn",
+    "commands": [{
+      "id": "ddbf74c8-8aaa-4350-a94d-170a5dd83687",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5d3deb67-cb43-4c6b-bf85-fc95c55410dd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1283x849",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "58696875-c7c9-46ac-92f7-0986d0792200",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9243b862-c931-47e0-aed8-13c3cdeb1509",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "padraig@test.com"
+    }, {
+      "id": "b2ae874e-20cb-45cb-9eb8-04f1460fa61b",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ff1cfdc1-ec32-4d91-8896-e5d5362fe073",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "T@sting123"
+    }, {
+      "id": "a0b3d04c-74b2-4505-9e0f-c3deca0227aa",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-button:nth-child(11)",
+      "targets": [
+        ["css=.govuk-button:nth-child(11)", "css:finder"],
+        ["xpath=//button[@type='Submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fad74e1c-e86c-4242-8124-1393b584b051",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-table__head .govuk-table__header:nth-child(2)",
+      "targets": [
+        ["css=.govuk-table__head .govuk-table__header:nth-child(2)", "css:finder"],
+        ["xpath=//main[@id='main-content']/div/table/thead/tr/th[2]", "xpath:idRelative"],
+        ["xpath=//th[2]", "xpath:position"],
+        ["xpath=//th[contains(.,'Job Capability')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "40411897-8403-4ee6-9e47-996d826c01a4",
+      "comment": "Verify column is for job capability",
+      "command": "verifyText",
+      "target": "css=.govuk-table__head .govuk-table__header:nth-child(2)",
+      "targets": [
+        ["css=.govuk-table__head .govuk-table__header:nth-child(2)", "css:finder"],
+        ["xpath=//main[@id='main-content']/div/table/thead/tr/th[2]", "xpath:idRelative"],
+        ["xpath=//th[2]", "xpath:position"],
+        ["xpath=//th[contains(.,'Job Capability')]", "xpath:innerText"]
+      ],
+      "value": "Job Capability"
+    }, {
+      "id": "f5eaac1d-2686-4d79-bc3f-69583fceaa31",
+      "comment": "Verify column is populated with job capability data",
+      "command": "verifyText",
+      "target": "css=.govuk-table__body:nth-child(3) .govuk-table__header:nth-child(2)",
+      "targets": [],
+      "value": "Engineering"
+    }, {
+      "id": "6ec30ae1-717e-477a-a0d6-2fc077384f75",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log out",
+      "targets": [
+        ["linkText=Log out", "linkText"],
+        ["css=.nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"eraseCookie('auth')\"]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "48b1ffb6-3132-4387-b5b1-55906c142f81",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "424997d6-4159-40e9-9a4c-97b9d7303057",
+    "name": "ViewBandLevels",
+    "commands": [{
+      "id": "9198c145-570c-4ed1-a369-517ffc7f011a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "92436dda-2433-4810-93bc-e7d0946ccd3e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1283x849",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "503e0dc1-13d6-4ef6-b4e4-218adedcc1fa",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4355e8ec-44a8-4952-989c-2659ce7f77e9",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "padraig@test.com"
+    }, {
+      "id": "fba9bd6f-d7ae-490b-9209-1de348d58c5d",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b1d9ce6b-55f8-4192-a402-d2efccf6d4f0",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "T@sting123"
+    }, {
+      "id": "c9558025-7998-44fd-b938-9b1c8600b4cc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-button:nth-child(11)",
+      "targets": [
+        ["css=.govuk-button:nth-child(11)", "css:finder"],
+        ["xpath=//button[@type='Submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6f64576-a3df-4263-957f-3d70416c7464",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Trainee",
+      "targets": [
+        ["linkText=Trainee", "linkText"],
+        ["css=.govuk-table__body:nth-child(2) .govuk-table__header:nth-child(3) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Trainee')])[2]", "xpath:link"],
+        ["xpath=//main[@id='main-content']/div/table/tbody/tr/td[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'viewcompetencies/2')]", "xpath:href"],
+        ["xpath=//td[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a3dc08d9-8e1b-4166-882f-5fc9f918fce8",
+      "comment": "Verify band level for trainee",
+      "command": "verifyText",
+      "target": "css=.govuk-table:nth-child(4) .govuk-table__row:nth-child(1) > .govuk-table__cell",
+      "targets": [
+        ["css=.govuk-table:nth-child(4) .govuk-table__row:nth-child(1) > .govuk-table__cell", "css:finder"],
+        ["xpath=//main[@id='main-content']/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Able to identify own goals and discusses these with People Manager. Understands the need to work conscientiously to achieve tasks on schedule.')]", "xpath:innerText"]
+      ],
+      "value": "Able to identify own goals and discusses these with People Manager. Understands the need to work conscientiously to achieve tasks on schedule."
+    }, {
+      "id": "8c670ea5-ff38-42b2-b53c-301af68549d1",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Back",
+      "targets": [
+        ["linkText=Back", "linkText"],
+        ["css=.govuk-back-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Back')]", "xpath:link"],
+        ["xpath=//main[@id='main-content']/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/viewroles')])[2]", "xpath:href"],
+        ["xpath=//main/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Back')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a1caba4-d5e6-4c07-b590-f69865887b8a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Senior Associate",
+      "targets": [
+        ["linkText=Senior Associate", "linkText"],
+        ["css=.govuk-table__body:nth-child(10) .govuk-table__header:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Senior Associate')]", "xpath:link"],
+        ["xpath=//main[@id='main-content']/div/table/tbody[9]/tr/td[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'viewcompetencies/4')]", "xpath:href"],
+        ["xpath=//tbody[9]/tr/td[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Senior Associate')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9951c81c-4b34-4e40-8ae3-a2daf54028e8",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.govuk-table:nth-child(4) .govuk-table__row:nth-child(1) > .govuk-table__cell",
+      "targets": [
+        ["css=.govuk-table:nth-child(4) .govuk-table__row:nth-child(1) > .govuk-table__cell", "css:finder"],
+        ["xpath=//main[@id='main-content']/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Seeks and responds positively to feedback regarding own learning and development. Approach with a willingness to take on tasks that are outside role scope.')]", "xpath:innerText"]
+      ],
+      "value": "Seeks and responds positively to feedback regarding own learning and development. Approach with a willingness to take on tasks that are outside role scope."
+    }, {
+      "id": "df655b1b-9471-4fd1-ad39-17ee0fa2433b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log out",
+      "targets": [
+        ["linkText=Log out", "linkText"],
+        ["css=.nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"eraseCookie('auth')\"]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f1181270-675b-4947-9524-a364ab51411b",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ccac435f-3115-45eb-a0e5-4e909d1a2b91",
+    "name": "VerifyCompetencyInfo",
+    "commands": [{
+      "id": "380ec1ec-c9e7-409c-880d-78901dd00821",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "26c1a092-ff58-48b8-8eb1-306813d0f5bd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1283x849",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bb9a008e-5082-47ea-9e75-a71ab317afd7",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "75dd9897-4c56-48d3-b9e0-e9c228ae2ce5",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "padraig@test.com"
+    }, {
+      "id": "d4cb83a6-ce99-4806-88cd-9969113d9822",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "21acc8a7-10b0-490b-9b00-ef93762be03d",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "T@sting123"
+    }, {
+      "id": "547ce4ce-d9df-4412-92a0-70c316a4f235",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-button:nth-child(11)",
+      "targets": [
+        ["css=.govuk-button:nth-child(11)", "css:finder"],
+        ["xpath=//button[@type='Submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe9280f2-b9fa-40c9-8228-8ed34ae1c9ae",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Trainee",
+      "targets": [
+        ["linkText=Trainee", "linkText"],
+        ["css=.govuk-table__body:nth-child(3) .govuk-table__header:nth-child(3) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Trainee')])[2]", "xpath:link"],
+        ["xpath=//main[@id='main-content']/div/table/tbody/tr/td[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'viewcompetencies/2')]", "xpath:href"],
+        ["xpath=//td[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "868868ca-11db-4d29-bfb3-0041a38aed59",
+      "comment": "Verify Competency title matches",
+      "command": "verifyText",
+      "target": "css=h2",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//main[@id='main-content']/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'List of Competencies For Band 2')]", "xpath:innerText"]
+      ],
+      "value": "Personal Performance"
+    }, {
+      "id": "4f50b77c-4fec-4f4e-b49e-fc488df57d25",
+      "comment": "Verify Competency title",
+      "command": "verifyText",
+      "target": "css=h2:nth-child(5)",
+      "targets": [
+        ["css=h2:nth-child(5)", "css:finder"],
+        ["xpath=//main[@id='main-content']/h2[2]", "xpath:idRelative"],
+        ["xpath=//h2[2]", "xpath:position"],
+        ["xpath=//h2[contains(.,'Working with Others')]", "xpath:innerText"]
+      ],
+      "value": "Working with Others"
+    }, {
+      "id": "6d4c1db7-31b8-4300-bbd8-df55fb48e3c9",
+      "comment": "Verify Competency title",
+      "command": "verifyText",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//main[@id='main-content']/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Setting Direction Development and Accountability')]", "xpath:innerText"]
+      ],
+      "value": "Setting Direction Development and Accountability"
+    }, {
+      "id": "cb165cd0-cc7a-4bd4-9795-beffc3550296",
+      "comment": "Verify competency title",
+      "command": "verifyText",
+      "target": "css=h2:nth-child(9)",
+      "targets": [
+        ["css=h2:nth-child(9)", "css:finder"],
+        ["xpath=//main[@id='main-content']/h2[3]", "xpath:idRelative"],
+        ["xpath=//h2[3]", "xpath:position"],
+        ["xpath=//h2[contains(.,'Supporting and Delivering the Strategy')]", "xpath:innerText"]
+      ],
+      "value": "Supporting and Delivering the Strategy"
+    }, {
+      "id": "aa0668a4-0767-451b-b12b-430aaa108f73",
+      "comment": "Verify Competency title",
+      "command": "verifyText",
+      "target": "css=h2:nth-child(11)",
+      "targets": [
+        ["css=h2:nth-child(11)", "css:finder"],
+        ["xpath=//main[@id='main-content']/h2[4]", "xpath:idRelative"],
+        ["xpath=//h2[4]", "xpath:position"],
+        ["xpath=//h2[contains(.,'Commerciality and Risk')]", "xpath:innerText"]
+      ],
+      "value": "Commerciality and Risk"
+    }, {
+      "id": "f92bf6a9-c605-4790-acb5-8644314c9f8a",
+      "comment": "Verify Competency title",
+      "command": "verifyText",
+      "target": "css=h2:nth-child(13)",
+      "targets": [
+        ["css=h2:nth-child(13)", "css:finder"],
+        ["xpath=//main[@id='main-content']/h2[5]", "xpath:idRelative"],
+        ["xpath=//h2[5]", "xpath:position"],
+        ["xpath=//h2[contains(.,'Communicating and Influence')]", "xpath:innerText"]
+      ],
+      "value": "Communicating and Influence"
+    }, {
+      "id": "12c9d4fc-b61c-49db-be9a-bb057d4c43cf",
+      "comment": "Verify Competency info",
+      "command": "verifyText",
+      "target": "css=.govuk-table:nth-child(4) .govuk-table__row:nth-child(1) > .govuk-table__cell",
+      "targets": [
+        ["css=.govuk-table:nth-child(4) .govuk-table__row:nth-child(1) > .govuk-table__cell", "css:finder"],
+        ["xpath=//main[@id='main-content']/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Able to identify own goals and discusses these with People Manager. Understands the need to work conscientiously to achieve tasks on schedule.')]", "xpath:innerText"]
+      ],
+      "value": "Able to identify own goals and discusses these with People Manager. Understands the need to work conscientiously to achieve tasks on schedule."
+    }, {
+      "id": "f4cd1c1f-9d3d-459b-8dd5-4f3087244204",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Back",
+      "targets": [
+        ["linkText=Back", "linkText"],
+        ["css=.govuk-back-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Back')]", "xpath:link"],
+        ["xpath=//main[@id='main-content']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/viewroles')]", "xpath:href"],
+        ["xpath=//main/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Back')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ec7df0eb-d007-40d2-b8de-d419e052fa89",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log out",
+      "targets": [
+        ["linkText=Log out", "linkText"],
+        ["css=.nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"eraseCookie('auth')\"]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f36f3c61-eaad-43eb-8f72-c0627b7957f6",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "3e7e72ec-62e0-4f27-9d4a-e60278fba526",
+    "name": "ViewBranding",
+    "commands": [{
+      "id": "96b1eb6f-1ba7-4ba2-978e-e32f4ec18fbf",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/viewroles",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac164a3b-2dd7-4c8d-8f94-bfa292a181cb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1512x889",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d295b1fe-4dd2-4b8e-b47f-d26fee76804f",
+      "comment": "",
+      "command": "click",
+      "target": "id=MDB-logo",
+      "targets": [
+        ["id=MDB-logo", "id"],
+        ["css=#MDB-logo", "css:finder"],
+        ["xpath=//img[@alt='kainos']", "xpath:img"],
+        ["xpath=//img[@id='MDB-logo']", "xpath:attributes"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "badfcf96-81c0-4df3-aae4-3cd4ccb9ec52",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=MDB-logo",
+      "targets": [
+        ["id=MDB-logo", "id"],
+        ["css=#MDB-logo", "css:finder"],
+        ["xpath=//img[@alt='kainos']", "xpath:img"],
+        ["xpath=//img[@id='MDB-logo']", "xpath:attributes"],
+        ["xpath=//a/img", "xpath:position"]
+      ],
+      "value": "MDB-logo"
+    }, {
+      "id": "17c3daed-aa79-4636-bfec-1eb2d1cbe99a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Trainee",
+      "targets": [
+        ["linkText=Trainee", "linkText"],
+        ["css=.govuk-table__body:nth-child(2) .govuk-table__header:nth-child(3) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Trainee')])[2]", "xpath:link"],
+        ["xpath=//main[@id='main-content']/div/table/tbody/tr/td[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'viewcompetencies/2')]", "xpath:href"],
+        ["xpath=//td[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "105114e8-2264-4743-86ca-942c05a2c4d1",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=MDB-logo",
+      "targets": [],
+      "value": "MDB-logo"
+    }, {
+      "id": "188065aa-ad04-4178-a25e-6fc82d1ea8ae",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log out",
+      "targets": [
+        ["linkText=Log out", "linkText"],
+        ["css=.nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"eraseCookie('auth')\"]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "72cf1677-aff5-40fc-af57-b4f2a9418c74",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "aabb708f-ee0c-4830-8757-80443fdc1889",
+    "name": "addJobRole",
+    "commands": [{
+      "id": "894d6731-ebb0-40ea-90b8-1d365973fba7",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "597ee773-7758-4311-99c3-5c302a66e452",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1283x849",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "39f47279-d414-40c0-a351-bd154962902a",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "37e1a777-af27-4803-b8d7-439c57c551f7",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "padraigadmin@test.com"
+    }, {
+      "id": "ce49f999-7730-4d5e-b483-668dc998403c",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "71f3dd18-b484-4281-97ae-7868342c60a0",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "T@sting123"
+    }, {
+      "id": "698da1bb-efae-4608-b82f-b84631705c5d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-button:nth-child(11)",
+      "targets": [
+        ["css=.govuk-button:nth-child(11)", "css:finder"],
+        ["xpath=//button[@type='Submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "45dfefc0-f3d7-443b-8652-9a2a4016a8c2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-button",
+      "targets": [
+        ["css=.govuk-button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Add new role')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ec2b6d9e-e7dd-4759-9091-fb8afbc541ea",
+      "comment": "",
+      "command": "click",
+      "target": "id=jobName",
+      "targets": [
+        ["id=jobName", "id"],
+        ["name=jobName", "name"],
+        ["css=#jobName", "css:finder"],
+        ["xpath=//input[@id='jobName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b5828a9-c650-4538-8830-f2d86cab8d8a",
+      "comment": "",
+      "command": "type",
+      "target": "id=jobName",
+      "targets": [
+        ["id=jobName", "id"],
+        ["name=jobName", "name"],
+        ["css=#jobName", "css:finder"],
+        ["xpath=//input[@id='jobName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Test Role"
+    }, {
+      "id": "10372bfa-0828-4802-a9e4-2dc531376824",
+      "comment": "",
+      "command": "click",
+      "target": "id=jobResponsibility",
+      "targets": [
+        ["id=jobResponsibility", "id"],
+        ["name=jobResponsibility", "name"],
+        ["css=#jobResponsibility", "css:finder"],
+        ["xpath=//textarea[@id='jobResponsibility']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eef2b2ac-e164-4a97-ba17-40629b6a3f06",
+      "comment": "",
+      "command": "type",
+      "target": "id=jobResponsibility",
+      "targets": [
+        ["id=jobResponsibility", "id"],
+        ["name=jobResponsibility", "name"],
+        ["css=#jobResponsibility", "css:finder"],
+        ["xpath=//textarea[@id='jobResponsibility']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "This is a test job role"
+    }, {
+      "id": "61e77522-0d16-46a2-ac73-ff0f6383f8e7",
+      "comment": "",
+      "command": "click",
+      "target": "id=specSummary",
+      "targets": [
+        ["id=specSummary", "id"],
+        ["name=specSummary", "name"],
+        ["css=#specSummary", "css:finder"],
+        ["xpath=//textarea[@id='specSummary']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div[3]/textarea", "xpath:idRelative"],
+        ["xpath=//div[3]/textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4a097d23-8568-4b1c-976e-09aaa9c34c3e",
+      "comment": "",
+      "command": "type",
+      "target": "id=specSummary",
+      "targets": [
+        ["id=specSummary", "id"],
+        ["name=specSummary", "name"],
+        ["css=#specSummary", "css:finder"],
+        ["xpath=//textarea[@id='specSummary']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div[3]/textarea", "xpath:idRelative"],
+        ["xpath=//div[3]/textarea", "xpath:position"]
+      ],
+      "value": "this is a test job spec "
+    }, {
+      "id": "4998f8aa-371b-45c9-b507-bca724810081",
+      "comment": "",
+      "command": "click",
+      "target": "id=jobFamilyId",
+      "targets": [
+        ["id=jobFamilyId", "id"],
+        ["name=jobFamilyId", "name"],
+        ["css=#jobFamilyId", "css:finder"],
+        ["xpath=//select[@id='jobFamilyId']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div[4]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4dafca5-34bd-4d24-b460-1f10be39905f",
+      "comment": "",
+      "command": "select",
+      "target": "id=jobFamilyId",
+      "targets": [],
+      "value": "label=Engineering"
+    }, {
+      "id": "0782d670-f3e0-4bb0-b68c-8ea39cf6180f",
+      "comment": "",
+      "command": "click",
+      "target": "id=capabilityId",
+      "targets": [
+        ["id=capabilityId", "id"],
+        ["name=capabilityId", "name"],
+        ["css=#capabilityId", "css:finder"],
+        ["xpath=//select[@id='capabilityId']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div[5]/select", "xpath:idRelative"],
+        ["xpath=//div[5]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9d494679-38cb-486e-8917-08937ebe165d",
+      "comment": "",
+      "command": "select",
+      "target": "id=capabilityId",
+      "targets": [],
+      "value": "label=Platforms"
+    }, {
+      "id": "c54a90c5-0fc1-4a67-bd92-d374e9b2c869",
+      "comment": "",
+      "command": "click",
+      "target": "id=bandLevelId",
+      "targets": [
+        ["id=bandLevelId", "id"],
+        ["name=bandLevelId", "name"],
+        ["css=#bandLevelId", "css:finder"],
+        ["xpath=//select[@id='bandLevelId']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div[6]/select", "xpath:idRelative"],
+        ["xpath=//div[6]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f897ae87-2ebf-4256-9677-1f68dbce2fa7",
+      "comment": "",
+      "command": "select",
+      "target": "id=bandLevelId",
+      "targets": [],
+      "value": "label=Trainee"
+    }, {
+      "id": "d3fd4345-9202-4bcc-a10c-cb72cedccd16",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-button",
+      "targets": [
+        ["css=.govuk-button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Add new role')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c3bd5a01-3362-4989-b887-97f96da4d6ff",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log out",
+      "targets": [
+        ["linkText=Log out", "linkText"],
+        ["css=.nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"eraseCookie('auth')\"]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "03a058d8-460d-41b8-9021-ca5965a29657",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "20b8a6b1-84ad-4c0b-8635-44fda42cee7d",
+    "name": "testRegisterExistingUser",
+    "commands": [{
+      "id": "61c5ca91-d6e9-4bb0-a97f-9af6426f1673",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/register",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b22dab16-82e1-48ab-88f4-bd4a8306e525",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1512x886",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "93ab9017-0cda-4c71-aaf3-2195513d1ba8",
+      "comment": "",
+      "command": "click",
+      "target": "id=firstName",
+      "targets": [
+        ["id=firstName", "id"],
+        ["name=firstName", "name"],
+        ["css=#firstName", "css:finder"],
+        ["xpath=//input[@id='firstName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "caea0139-4021-467f-95c9-7d0ac84ea5c0",
+      "comment": "",
+      "command": "type",
+      "target": "id=firstName",
+      "targets": [
+        ["id=firstName", "id"],
+        ["name=firstName", "name"],
+        ["css=#firstName", "css:finder"],
+        ["xpath=//input[@id='firstName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Padraig"
+    }, {
+      "id": "ad4eb24e-dcb3-4891-a027-efa8daf445b1",
+      "comment": "",
+      "command": "click",
+      "target": "id=lastName",
+      "targets": [
+        ["id=lastName", "id"],
+        ["name=lastName", "name"],
+        ["css=#lastName", "css:finder"],
+        ["xpath=//input[@id='lastName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "967d90f0-b77a-4b01-ba77-6dc15dd3274e",
+      "comment": "",
+      "command": "type",
+      "target": "id=lastName",
+      "targets": [
+        ["id=lastName", "id"],
+        ["name=lastName", "name"],
+        ["css=#lastName", "css:finder"],
+        ["xpath=//input[@id='lastName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "Mervyn"
+    }, {
+      "id": "e95d9876-8987-4507-860f-7078cdbfab87",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf8b00ae-f956-4f6a-abb5-35cc2ef0a3cc",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "padraig@test.com"
+    }, {
+      "id": "958ed508-74e6-4249-aaf8-da211be552d3",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ec811297-d3e0-4d63-a678-e52e688f58f0",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "T@sting123"
+    }, {
+      "id": "8388b46a-cfe6-4f18-8166-043731c7adee",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-button",
+      "targets": [
+        ["css=.govuk-button", "css:finder"],
+        ["xpath=//button[@type='Submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "003a9c4d-1e59-4f75-9d98-bf83a88bb54e",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "750d27c5-3296-4872-9cad-0c1516c7b3a0",
+    "name": "testDelete",
+    "commands": [{
+      "id": "664a96bb-b532-41c8-ae0b-fd2720bd2e5c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f37e1694-43c4-4516-9645-ef8c916e0b62",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1283x849",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1eb6dcec-8168-4610-92df-761476be14aa",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e51bd1e5-2c82-426f-b5b4-72eccacefdec",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "padraigadmin@test.com"
+    }, {
+      "id": "6e85d66f-28cf-43eb-8be3-9c639e6d3ab2",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8cd9ec34-d579-4a12-acac-3ccfecf98751",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "T@sting123"
+    }, {
+      "id": "018c96f4-7a85-4568-993a-d77a4e51e5a3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-button",
+      "targets": [
+        ["css=.govuk-button", "css:finder"],
+        ["xpath=//button[@type='Submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "53813bc5-d8e8-442b-ab82-eb22eaf53123",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-table__body:nth-child(24) #delCheckBox",
+      "targets": [
+        ["css=.govuk-table__body:nth-child(24) #delCheckBox", "css:finder"],
+        ["xpath=(//input[@id='delCheckBox'])[23]", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/table[2]/tbody[23]/tr/td/input", "xpath:idRelative"],
+        ["xpath=//tbody[23]/tr/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b727223d-2a86-4c2a-98eb-66bc572f1fdb",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f15a1445-3ae5-408d-b5e9-090d59fd777c",
+      "comment": "",
+      "command": "click",
+      "target": "id=delButton",
+      "targets": [
+        ["id=delButton", "id"],
+        ["css=#delButton", "css:finder"],
+        ["xpath=//input[@id='delButton']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffb875a1-33c3-47e0-956e-4112618f712b",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "Are you sure want to delete your selected roles?  Hint: May take a few seconds",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cc79bb85-4767-4cae-8200-117a983bdd7d",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f5e4e40c-5830-4d04-ba68-a19672c69efb",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log out",
+      "targets": [
+        ["linkText=Log out", "linkText"],
+        ["css=.nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"eraseCookie('auth')\"]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c129d780-2700-4d4c-ab81-8bad8afa53c1",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "47bedad4-ae27-437d-9fc8-9e9cb1d4ecad",
+    "name": "editRole",
+    "commands": [{
+      "id": "44b20d3b-6e82-4094-9139-a166b66437e3",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4770201b-8b2a-4049-8d34-67ffef6db1a7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1147x886",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4aacd395-ed91-4a65-baa5-25b392fd75a2",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4ed8dc0-dfde-42ff-b1cf-0b133d4b0c2c",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "padraigadmin@test.com"
+    }, {
+      "id": "c38e04c7-dccb-404a-ba11-679269d02f7f",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "36d5b561-b468-44f9-b2df-f167dcc977d2",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "T@sting123"
+    }, {
+      "id": "eaec260c-4097-49b6-a0d2-cab912adac51",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-button",
+      "targets": [
+        ["css=.govuk-button", "css:finder"],
+        ["xpath=//button[@type='Submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fb9c5ca1-1e36-49ea-8469-2aa0aed5134b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=edit",
+      "targets": [
+        ["linkText=edit", "linkText"],
+        ["css=.govuk-table__body:nth-child(2) .govuk-table__header:nth-child(7) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'edit')]", "xpath:link"],
+        ["xpath=//main[@id='main-content']/div/table[2]/tbody/tr/th/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/editrole/1')]", "xpath:href"],
+        ["xpath=//th/a", "xpath:position"],
+        ["xpath=//a[contains(.,'edit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a1f6166f-93d2-41b6-8fde-c023c7e462b2",
+      "comment": "",
+      "command": "click",
+      "target": "id=jobName",
+      "targets": [
+        ["id=jobName", "id"],
+        ["name=jobName", "name"],
+        ["css=#jobName", "css:finder"],
+        ["xpath=//textarea[@id='jobName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[2]", "xpath:idRelative"],
+        ["xpath=//textarea[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0526c59c-793f-4c0b-8b0c-0ce48a74608a",
+      "comment": "",
+      "command": "type",
+      "target": "id=jobName",
+      "targets": [
+        ["id=jobName", "id"],
+        ["name=jobName", "name"],
+        ["css=#jobName", "css:finder"],
+        ["xpath=//textarea[@id='jobName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[2]", "xpath:idRelative"],
+        ["xpath=//textarea[2]", "xpath:position"]
+      ],
+      "value": "Trainee Software Engineer testing"
+    }, {
+      "id": "196ec087-3c41-46c9-9e04-27acbbd8b690",
+      "comment": "",
+      "command": "click",
+      "target": "id=specSummary",
+      "targets": [
+        ["id=specSummary", "id"],
+        ["name=specSummary", "name"],
+        ["css=#specSummary", "css:finder"],
+        ["xpath=//textarea[@id='specSummary']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[3]", "xpath:idRelative"],
+        ["xpath=//textarea[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1fe7c3d9-d53d-4513-ab9c-3bf844149fa8",
+      "comment": "",
+      "command": "type",
+      "target": "id=specSummary",
+      "targets": [
+        ["id=specSummary", "id"],
+        ["name=specSummary", "name"],
+        ["css=#specSummary", "css:finder"],
+        ["xpath=//textarea[@id='specSummary']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[3]", "xpath:idRelative"],
+        ["xpath=//textarea[3]", "xpath:position"]
+      ],
+      "value": "As a Trainee Software Engineer with Kainos, you will work on projects where you can make a real difference to people’s lives – the lives of people you know. After taking part in our award-winning, seven-week Engineering Academy, you will then join one of our many project teams, to learn from our experienced developers, project managers and customer-facing staff. You’ll have great support and mentoring, balanced with the experience of being given real, meaningful work to do, to help you truly develop both technically and professionally. testing"
+    }, {
+      "id": "546d4f97-e7fd-40fc-80d5-d102031f4cfe",
+      "comment": "",
+      "command": "click",
+      "target": "id=jobResponsibility",
+      "targets": [
+        ["id=jobResponsibility", "id"],
+        ["name=jobResponsibility", "name"],
+        ["css=#jobResponsibility", "css:finder"],
+        ["xpath=//textarea[@id='jobResponsibility']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[4]", "xpath:idRelative"],
+        ["xpath=//textarea[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "436feaae-791b-4775-8729-c7ea0112b786",
+      "comment": "",
+      "command": "type",
+      "target": "id=jobResponsibility",
+      "targets": [
+        ["id=jobResponsibility", "id"],
+        ["name=jobResponsibility", "name"],
+        ["css=#jobResponsibility", "css:finder"],
+        ["xpath=//textarea[@id='jobResponsibility']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[4]", "xpath:idRelative"],
+        ["xpath=//textarea[4]", "xpath:position"]
+      ],
+      "value": "•Contribute to developing high quality solutions which impact the lives of users worldwide. You’ll work as part of a team to solve problems and produce innovative software solutions.  •Learn about new technologies and approaches, with talented colleagues who will help you learn, develop and grow.  •Based in our Kainos office and often on our customer sites, you will work on a project teams to learn how to develop and unit test developing and unit testing straightforward or low complexity components, and then moving on to more complex elements as you increase your knowledge.  •Work with other developers in working through designs and user stories and to produce real development solutions   •Will be fully supported by experienced colleagues in the team to follow designs,and then progress to assist in any other aspect of the project life-cycle under supervision   •Develop excellent technical, team-working and Agile project experience  testing"
+    }, {
+      "id": "a19f13c0-2653-44d0-bab2-505aef9fd718",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//button[@id='submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b1983de0-e7fe-4311-b46f-de953df86b90",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=edit",
+      "targets": [
+        ["linkText=edit", "linkText"],
+        ["css=.govuk-table__body:nth-child(2) .govuk-table__header:nth-child(7) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'edit')]", "xpath:link"],
+        ["xpath=//main[@id='main-content']/div/table[2]/tbody/tr/th/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/editrole/1')]", "xpath:href"],
+        ["xpath=//th/a", "xpath:position"],
+        ["xpath=//a[contains(.,'edit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dea07a4a-5c3b-4e4d-b04c-219483fe508e",
+      "comment": "",
+      "command": "click",
+      "target": "id=jobName",
+      "targets": [
+        ["id=jobName", "id"],
+        ["name=jobName", "name"],
+        ["css=#jobName", "css:finder"],
+        ["xpath=//textarea[@id='jobName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[2]", "xpath:idRelative"],
+        ["xpath=//textarea[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "96fc39ae-fdc8-4331-97dd-bc4a6d77e706",
+      "comment": "",
+      "command": "type",
+      "target": "id=jobName",
+      "targets": [
+        ["id=jobName", "id"],
+        ["name=jobName", "name"],
+        ["css=#jobName", "css:finder"],
+        ["xpath=//textarea[@id='jobName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[2]", "xpath:idRelative"],
+        ["xpath=//textarea[2]", "xpath:position"]
+      ],
+      "value": "Trainee Software Engineer"
+    }, {
+      "id": "5113a8cf-852f-42a8-a315-c8a5a5cdc86a",
+      "comment": "",
+      "command": "click",
+      "target": "id=specSummary",
+      "targets": [
+        ["id=specSummary", "id"],
+        ["name=specSummary", "name"],
+        ["css=#specSummary", "css:finder"],
+        ["xpath=//textarea[@id='specSummary']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[3]", "xpath:idRelative"],
+        ["xpath=//textarea[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3dccb114-088d-4ff0-a280-970b37805000",
+      "comment": "",
+      "command": "type",
+      "target": "id=specSummary",
+      "targets": [
+        ["id=specSummary", "id"],
+        ["name=specSummary", "name"],
+        ["css=#specSummary", "css:finder"],
+        ["xpath=//textarea[@id='specSummary']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[3]", "xpath:idRelative"],
+        ["xpath=//textarea[3]", "xpath:position"]
+      ],
+      "value": "As a Trainee Software Engineer with Kainos, you will work on projects where you can make a real difference to people’s lives – the lives of people you know. After taking part in our award-winning, seven-week Engineering Academy, you will then join one of our many project teams, to learn from our experienced developers, project managers and customer-facing staff. You’ll have great support and mentoring, balanced with the experience of being given real, meaningful work to do, to help you truly develop both technically and professionally."
+    }, {
+      "id": "bef9885f-7341-45c6-a80c-d3248cb4251d",
+      "comment": "",
+      "command": "click",
+      "target": "id=jobResponsibility",
+      "targets": [
+        ["id=jobResponsibility", "id"],
+        ["name=jobResponsibility", "name"],
+        ["css=#jobResponsibility", "css:finder"],
+        ["xpath=//textarea[@id='jobResponsibility']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[4]", "xpath:idRelative"],
+        ["xpath=//textarea[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1145429f-6089-4963-bbe7-23e221c9a9aa",
+      "comment": "",
+      "command": "type",
+      "target": "id=jobResponsibility",
+      "targets": [
+        ["id=jobResponsibility", "id"],
+        ["name=jobResponsibility", "name"],
+        ["css=#jobResponsibility", "css:finder"],
+        ["xpath=//textarea[@id='jobResponsibility']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/div/textarea[4]", "xpath:idRelative"],
+        ["xpath=//textarea[4]", "xpath:position"]
+      ],
+      "value": "•Contribute to developing high quality solutions which impact the lives of users worldwide. You’ll work as part of a team to solve problems and produce innovative software solutions.  •Learn about new technologies and approaches, with talented colleagues who will help you learn, develop and grow.  •Based in our Kainos office and often on our customer sites, you will work on a project teams to learn how to develop and unit test developing and unit testing straightforward or low complexity components, and then moving on to more complex elements as you increase your knowledge.  •Work with other developers in working through designs and user stories and to produce real development solutions   •Will be fully supported by experienced colleagues in the team to follow designs,and then progress to assist in any other aspect of the project life-cycle under supervision   •Develop excellent technical, team-working and Agile project experience"
+    }, {
+      "id": "0f2346b1-514f-4d96-ad22-44c3e61d6e4b",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//button[@id='submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae9ce8dc-c325-4880-9dfc-5580b700edb3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log out",
+      "targets": [
+        ["linkText=Log out", "linkText"],
+        ["css=.nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"eraseCookie('auth')\"]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "51b517ef-46cc-4a7f-ad6a-ab97a89b4e7f",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ce36721c-4571-4686-9e57-412c7ac9494a",
+    "name": "testRegisterUser",
+    "commands": [{
+      "id": "91c3cf41-050f-4f88-be6b-fed9f99d9f0b",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/register",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "87004e3d-b069-47f9-8528-c1524500ca81",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1055",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "993316a5-6913-416e-a595-4af990013e61",
+      "comment": "",
+      "command": "click",
+      "target": "id=firstName",
+      "targets": [
+        ["id=firstName", "id"],
+        ["name=firstName", "name"],
+        ["css=#firstName", "css:finder"],
+        ["xpath=//input[@id='firstName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "64abd4f6-be62-4aee-84f5-458f5441e5c9",
+      "comment": "",
+      "command": "type",
+      "target": "id=firstName",
+      "targets": [
+        ["id=firstName", "id"],
+        ["name=firstName", "name"],
+        ["css=#firstName", "css:finder"],
+        ["xpath=//input[@id='firstName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Tester"
+    }, {
+      "id": "3b34214f-e907-4a69-8c1c-38684e508a1d",
+      "comment": "",
+      "command": "click",
+      "target": "id=lastName",
+      "targets": [
+        ["id=lastName", "id"],
+        ["name=lastName", "name"],
+        ["css=#lastName", "css:finder"],
+        ["xpath=//input[@id='lastName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "39e0e3b6-bded-4a2d-ad93-383d3c204c32",
+      "comment": "",
+      "command": "type",
+      "target": "id=lastName",
+      "targets": [
+        ["id=lastName", "id"],
+        ["name=lastName", "name"],
+        ["css=#lastName", "css:finder"],
+        ["xpath=//input[@id='lastName']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "TesterLname"
+    }, {
+      "id": "99078f3a-ea9a-4917-93f3-b67ab544038f",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "19b4b0c0-00fe-45ea-8f06-df7203fba5bf",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return Math.random(). toString(36).substring(2,12)",
+      "targets": [],
+      "value": "ticket"
+    }, {
+      "id": "4e24cdab-16e8-42e9-8b4b-614357eaa631",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [],
+      "value": "${ticket}@email"
+    }, {
+      "id": "8360cd70-4ff7-422b-8f41-70250278c341",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5fa9837e-6839-40d5-9e32-b43fc7c8d6a1",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "T@sting96"
+    }, {
+      "id": "d2152fef-aae0-45ac-aa2e-b8889cbdf422",
+      "comment": "",
+      "command": "click",
+      "target": "css=.govuk-button",
+      "targets": [
+        ["css=.govuk-button", "css:finder"],
+        ["xpath=//button[@type='Submit']", "xpath:attributes"],
+        ["xpath=//main[@id='main-content']/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "788cc176-5ac5-48e0-91c0-89969bf5e005",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:3000/viewroles", "http://localhost:3000/addnewjob", "http://localhost:3000/register", "http://localhost:3000/login"],
+  "plugins": []
+}
