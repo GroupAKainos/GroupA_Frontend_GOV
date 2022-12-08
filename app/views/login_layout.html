@@ -45,12 +45,6 @@
 
 {% block header %}
 {# Set serviceName in config.js. #}
-  {{ govukHeader({
-    homepageUrl: "/",
-    serviceName: serviceName,
-    serviceUrl: "/",
-    containerClasses: "govuk-width-container"
-  }) }}
 
 <style>
   .navbar-light .navbar-nav .nav-link {
@@ -88,6 +82,7 @@
     </div>
   </div>
 </nav>
+<br><br>
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
@@ -95,7 +90,7 @@
 {% block footer %}
 <div class="d-flex justify-content-center" style="padding-bottom: 35px;">
 <a href="https://www.linkedin.com/company/kainos/" title="LinkedIn">
-  <img  src="{{ asset_path }}images/linkedin.png" alt="facebook" style="padding-right: 3px;"></img>
+  <img  src="{{ asset_path }}images/linkedin.png" alt="linkedin" style="padding-right: 3px;"></img>
 </a>
 <a href="https://twitter.com/KainosSoftware" title="Twitter">
   <img src="{{ asset_path }}images/twitter.png" alt="twitter" height="50"></img>

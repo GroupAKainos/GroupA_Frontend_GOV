@@ -45,13 +45,14 @@ Adding new job role
   required: "true",
   value:data["specSummary"],
   label: {
-  text: "Job Specification"
+  text: "Job Specification",
+  for: "specSummary"
   }
   }) }}
 
   {% if family and family.length > 0 %}
   <div class="govuk-form-group">
-    <label class="govuk-label" for="family">
+    <label class="govuk-label" for="jobFamilyId">
       Role Family
     </label>
     <select class="govuk-select" id="jobFamilyId" name="jobFamilyId" required>
@@ -75,7 +76,7 @@ Adding new job role
 
   {% if capability and capability.length > 0 %}
   <div class="govuk-form-group">
-    <label class="govuk-label" for="sort">
+    <label class="govuk-label" for="capabilityId">
       Capability Family
     </label>
     <select class="govuk-select" id="capabilityId" name="capabilityId" required>
@@ -96,7 +97,7 @@ Adding new job role
 
   {% if bandlevel and bandlevel.length > 0 %}
   <div class="govuk-form-group">
-    <label class="govuk-label" for="bandlevel">
+    <label class="govuk-label" for="bandLevelId">
       Band Level
     </label>
     <select class="govuk-select" id="bandLevelId" name="bandLevelId" required>
